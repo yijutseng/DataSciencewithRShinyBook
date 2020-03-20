@@ -1,0 +1,42 @@
+# 將Shiny App上線 {#Deploy}
+
+將Shiny App放上網路給其他人使用，使用者可以不用安裝R，使用一般的瀏覽器即可使用Shiny App。
+有一資料夾有所有需要的檔案
+app.R
+
+1. [shinyapps.io](https://www.shinyapps.io/)
+  - 將Shiny App架在RStudio的伺服器上
+  - 在一定使用量下免費
+  - 若超過免費使用額度或是需要特殊功能，有多種付費套組可供選擇
+  - 方便使用
+  - 需要[rsconnect套件](https://github.com/rstudio/rsconnect)
+[shinyapps.io user guide - Getting Started](https://docs.rstudio.com/shinyapps.io/getting-started.html)
+
+```{r eval=F}
+install.packages("devtools")
+devtools::install_github("rstudio/rsconnect")
+```
+
+2. RStudio Connect
+  - 將Shiny App架在自己的伺服器上
+  - 為付費軟體，有許多整合型的功能，包括使用者權限管理等
+  - 提供教育授權，可在官方網頁填單申請
+  
+3. Shiny Server
+  - 將Shiny App架在自己的伺服器上
+  - 目前只可安裝在linux伺服器，若無linux伺服器，可考慮使用雲端服務，如[AWS](https://aws.amazon.com/tw/)、[Google Cloud Service]()等，上述服務都有免費試用額度，若你有教師或學生身分，可申請[AWS Educate](https://aws.amazon.com/tw/education/awseducate/)，每年都會提供一定的免費使用額度，且不用信用卡就能註冊帳號，方便還沒有信用卡的學生申請，也因此我在蠻多課程中使用[AWS Educate](https://aws.amazon.com/tw/education/awseducate/)的伺服器或是資料庫等服務。
+  - 為免費軟體 (AGPL v3)
+  沒有授權跟SSL功能，偏私人且需要管理權限的的服務不建議使用此免費版本，除非有其他方式可控管。
+  每個App只會有一個R session，如果會有很多使用者同時使用你的Shiny App，不建議使用
+  
+4. Shiny Server Pro
+  - 可將Shiny App架在自己的伺服器上
+  - 目前只可安裝在linux伺服器，若無linux伺服器，可考慮使用雲端服務，如[AWS](https://aws.amazon.com/tw/)、[Google Cloud Service]()等
+  - 為收費軟體，與Shiny Server免費版的差異是：
+    - 有授權機制且有SSL
+    - 每個Shiny App可有多個R session，在較多使用者的情況下，效能會顯著提升
+    - 有管理者監控儀表板服務
+  
+
+
+

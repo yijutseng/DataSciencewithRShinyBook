@@ -1,0 +1,58 @@
+# Shiny App架構 {#structure}
+
+```{r}
+library(shiny)
+```
+
+Shiny App是由**使用者介面(User Interface)**與**伺服器端程式 (Server Instruction)**組合而成，分別負責下列功能：
+
+- **使用者介面(User Interface)**：
+  - **輸入元件**：
+  - **輸出元件**：
+  
+- **伺服器端程式 (Server Instruction)**：產出使用者介面所需的輸出元件*
+
+
+## 使用者介面 (User Interface)
+`ui.R`
+ui function
+```{r}
+fluidPage()
+```
+
+UI可包含輸入 (input)與輸出 (output)相關元件 (elements)，以function函數方式叫用，各輸入元件介紹詳見\@ref(input)，輸出元件介紹詳見\@ref(output)。
+
+```{r}
+fluidPage(
+  #input()
+  #,
+  #output()
+)
+```
+
+## 伺服器端程式 (Server Instruction)
+`server.R`
+server function
+```{r}
+function (input,output){
+  
+}
+```
+
+## 單一整合程式 app.R
+也可將上述整合成單一程式碼檔案`app.R`，包含ui function、server function以及呼叫`shinyApp()`將**ui**與**server**組合成Shiny App，程式碼如下：
+
+```{r}
+ui <- fluidPage()
+server <- function (input,output){
+  
+}
+shinyApp(ui = ui, server = server)
+```
+
+上述程式碼可直接複製貼上至R Script並點選程式碼編輯區上方的**Run App**，即可看到一空白網頁，表示Shiny可在你的電腦正常運作。未來若想建立任何新的Shiny App，都可使用上述程式碼作為起點，並依需求將ui function與server function撰寫完畢。
+
+
+
+以Shiny App的設計來說，每個使用者打開你所開發的Shiny App時，**伺服器端程式 (Server Instruction)**中的程式碼都會執行，但其他部分的程式只會在每個R session開始時執行一次。
+

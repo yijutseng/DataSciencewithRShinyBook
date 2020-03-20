@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584526478099.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1739990663",
+    "id" : "1476B3D8",
+    "lastKnownWriteTime" : 1584597158,
+    "last_content_update" : 1584597158658,
+    "path" : "G:/我的雲端硬碟/RShinyForDataScience/05-server.Rmd",
+    "project_path" : "05-server.Rmd",
+    "properties" : {
+        "cursorPosition" : "93,0",
+        "scrollLine" : "72"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

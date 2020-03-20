@@ -1,0 +1,43 @@
+# 介面與效能測試 {#test}
+
+在
+
+shinytest
+shinyloadtest
+profvis
+
+Async
+
+shinyloadtest -> profvis -> Optimize -> Deploy
+
+
+shinyloadtest
+
+run app
+record
+playback
+analyze
+
+要開兩個R session，第一個session跑Shiny App，第二個session跑shinyloadtest
+
+profiling
+
+花時間的程式碼，如讀檔，grouping，aggregation等，可以在Shiny App執行前就將檔案準備好，例如把可以先跑的程式碼寫在獨立的R Script中，用排程的方式已固定的頻率重新執行，以更新資料
+
+plot caching
+畫圖很慢
+有一些圖是蠻多使用者在使用Shiny App的時候會得到的輸出結果
+
+```{r eval=F}
+renderCachedPlot({
+  
+},cacheKeyExpr = {
+  
+})
+renderPlot()
+```
+
+## 參考資料
+
+- [Getting started with shinytest](https://rstudio.github.io/shinytest/articles/shinytest.html)
+- [Shiny in Production](http://bit.ly/shiny-prod-book)

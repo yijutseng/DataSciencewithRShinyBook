@@ -1,0 +1,65 @@
+# 儀表板 {#dashboard}
+
+```{r}
+library(shinydashboard)
+```
+
+使用`shinydashboard`套件，使用者可快速製作像**儀表板**的Shiny App，因原理與基本架構都是使用Shiny，程式的基本架構與Shiny App相同，包含**使用者介面(User Interface)**與**伺服器端程式 (Server Instruction)**兩個部分。比較特別的是，在**使用者介面(User Interface)**中，通常會使用`dashboardPage()`函數建構，而非常見的`fluidPage()`函數。
+
+```{r eval=F}
+ui <- dashboardPage()
+```
+
+Shiny Dashboard的標準架構包括儀表板標頭 (header)、側邊選單 (sidebar)以及主頁面 (body)在`dashboardPage()`函數函數中，
+```{r eval=F}
+ui <- dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody()
+)
+```
+
+`dashboardSidebar()`可由`sidebarMenu()`組成，每個`sidebarMenu()`中可有多個`meunItem()`
+
+選單功能中，可加上icon幫助使用者理解內容
+
+`dashboardBody()`是由row和column組成
+
+Box
+`infoBox()`
+`valueBox()`
+
+
+Leaflet
+leafletjs
+`leaflet`套件
+```{r}
+# install.packages("leaflet")
+library(leaflet)
+leaflet() %>% addTiles() %>%
+  setView(121.388396,25.034548,zoom=17)
+```
+
+在Shiny App/Dashboard 使用 leaflet 地圖
+
+1. Fetch the data
+
+- 要很快，否則使用者體驗會很差
+- 可以從
+資料庫 (`DBI` 套件)
+檔案 (`readr` 套件)
+API (`jsonlite`, `readr`, 或是`xml2`套件)
+
+2. Process/summarize the data
+3. Present processed data
+
+數字與文字 `renderText`
+表格 `renderTable`, `DT`套件
+圖片 `renderPlot`
+
+4. Provide exploration tools
+使用先前介紹的輸入元件\@ref(input)，讓使用者調整輸入值，作為改變輸出圖表的依據。舉例來說，
+
+實現互動式輸出元件的相關套件
+DT: 互動式表格
+leaflet: 互動式地圖

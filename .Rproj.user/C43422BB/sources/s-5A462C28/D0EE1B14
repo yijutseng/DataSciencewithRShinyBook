@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584593088492.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D0EE1B14",
+    "lastKnownWriteTime" : 1584593540,
+    "last_content_update" : 1584593540836,
+    "path" : "G:/我的雲端硬碟/RShinyForDataScience/06-UIDesign.Rmd",
+    "project_path" : "06-UIDesign.Rmd",
+    "properties" : {
+        "cursorPosition" : "130,7",
+        "scrollLine" : "112"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,95 @@
+# 伺服器端程式 Server {#server}
+
+伺服器端程式中有server函數，server函數的格式如下:
+```{r}
+server <- function (input,output){
+  
+}
+```
+
+在server函數中，兩個固定的參數分別為input與output，分別為使用者介面UI函數中所包含輸入input與輸出output相關元件，若須取用特定輸入與輸出相關元件，可使用`輸入或輸出$Id`作為取用路徑，如`input$checkbox`，`output$plot`等，`$`錢字號前方指定取用輸入元件還是輸出元件，後方指定元件的Id。因此，在使用者介面UI函數中，幫各輸入與輸出元件取容易記憶與識別的Id是很重要的。
+
+server函數中最重要的功能為**產出使用者介面所需的輸出元件(內容)**，為了產出輸出元件，我們必須使用渲染函數(Render function)，渲染函數與輸入輸出函數類似，有固定的格式，通常為`renderXXX()`，`XXX`為**需要呈現的資料/內容格式**，如`Plot`、`Image`、`Table`等，組合成`renderPlot()`、`renderImage()`等函數。渲染函數的輸入參數為一獨立函數，此函數必須使用`{ }`大括號包起來。與撰寫函數一樣，`{ }`大括號中可有無限多行程式碼，以**製作與產生需要呈現的資料/內容**，如直方圖`hist(1:30)`
+
+```{r eval=F}
+server <- function (input,output){
+  renderPlot( {
+    hist(1:30) 
+  } )
+}
+```
+
+
+若輸出的圖形/資料會依照輸入資料改變，則需要在渲染函數中取用輸入元件，取用方式為`輸入或輸出$Id`，如`input$checkbox`、`input$max_num`等，輸入元件的值會隨著使用者介面的調整而即時變動，呈上述範例，我們可以將原最大數值`30`改為由輸入元件`input$max_num`決定，以達成**互動式**應用程式的效果。
+```{r eval=F}
+server <- function (input,output){
+  renderPlot( {
+    hist(1:input$max_num) 
+  } )
+}
+```
+
+最後將渲染函數的值指定給輸出元件，如`output$plot<-渲染函數({#一大堆程式碼})`，即完成使用者介面所需的輸出output元件的產出程式。
+```{r eval=F}
+server <- function (input,output){
+  output$plot<-renderPlot( {
+    hist(1:input$max_num) 
+  } )
+}
+```
+
+反應函數Reactive function
+
+在使用者介面中，當輸入元件 (如`input$num`)的值改變時，會通知使用該輸入元件的反應函數，該反應函數使用該輸入元件的新值，並做相對應的運算與輸出處理。
+
+Use a code chunk to build an object
+
+Reactive toolkit
+1. 渲染函數 `render*()` 
+2. 反應函數 `reactive()`
+3. 
+4. 
+5. 
+6. 
+7. 
+
+以渲染函數來說，若輸入元件 (如`input$num`)的值改變時，渲染函數`renderPlot({ })`大括號`{ }`中的程式碼會從頭到尾從新執行一次。
+```{r eval=F}
+renderPlot( {
+  ## re-run start
+    hist(1:30) 
+  ## re-run end
+  } )
+```
+
+在某些狀況中，渲染函數`renderPlot({ })`大括號`{ }`中的程式碼會在server function中出現多次，若每次輸入元件改變時，同樣的程式碼必須執行多次，在效能上可能會出現問題，此時可用反應函數`reactive()`，將執行結果暫存。
+```{r eval=F}
+data<-reactive({
+  
+}
+)
+```
+
+
+`isolate()`
+將不需即時反應/重跑程式的輸入元件放入隔離函數`isolate()`中，即可將此輸入元件變成非反應元件，當此輸入元件改變時，程式並不會成跑，此法可降低程式重跑的次數，提升效能與使用者體驗。
+
+
+`observeEvent()`，當`observeEvent()`中的輸入元件改變時，將會觸發伺服器端程式碼的執行
+
+`observe()`就像其他反應函數的使用方式
+
+
+Delay reactions
+`eventReactive()`
+根據上述反應函數的介紹，通常輸入元件改變時，反應函數會即時反應，並改變輸出內容，但有時我們想避免不必要的即時反應，舉例來說，
+action button
+
+`reactiveValues()`
+藉由輸入函數，修改自定義的資料內容，接著觸發反應函數的功能，並更新相對應的輸出
+
+
+timer
+
+
+

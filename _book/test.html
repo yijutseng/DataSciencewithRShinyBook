@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Ch. 8 介面與效能測試 | 使用R Shiny設計資料科學應用程式</title>
+  <meta name="description" content="Ch. 8 介面與效能測試 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Ch. 8 介面與效能測試 | 使用R Shiny設計資料科學應用程式" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ch. 8 介面與效能測試 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ch. 8 介面與效能測試 | 使用R Shiny設計資料科學應用程式" />
+  
+  <meta name="twitter:description" content="Ch. 8 介面與效能測試 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  
+
+<meta name="author" content="曾意儒 Yi-Ju Tseng" />
+
+
+<meta name="date" content="2020-03-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dashboard.html"/>
+<link rel="next" href="js.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet/leaflet.js"></script>
+<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">使用R Shiny設計資料科學應用程式</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#preface"></a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 前言</a></li>
+<li class="chapter" data-level="2" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>2</b> Shiny App架構</a><ul>
+<li class="chapter" data-level="2.1" data-path="structure.html"><a href="structure.html#使用者介面-user-interface"><i class="fa fa-check"></i><b>2.1</b> 使用者介面 (User Interface)</a></li>
+<li class="chapter" data-level="2.2" data-path="structure.html"><a href="structure.html#伺服器端程式-server-instruction"><i class="fa fa-check"></i><b>2.2</b> 伺服器端程式 (Server Instruction)</a></li>
+<li class="chapter" data-level="2.3" data-path="structure.html"><a href="structure.html#單一整合程式-app.r"><i class="fa fa-check"></i><b>2.3</b> 單一整合程式 app.R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="input.html"><a href="input.html"><i class="fa fa-check"></i><b>3</b> 輸入Inputs</a></li>
+<li class="chapter" data-level="4" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>4</b> 輸出 Outputs</a></li>
+<li class="chapter" data-level="5" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>5</b> 伺服器端程式 Server</a></li>
+<li class="chapter" data-level="6" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>6</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="6.1" data-path="design.html"><a href="design.html#樣式模板"><i class="fa fa-check"></i><b>6.1</b> 樣式模板</a></li>
+<li class="chapter" data-level="6.2" data-path="design.html"><a href="design.html#section"><i class="fa fa-check"></i><b>6.2</b> </a></li>
+<li class="chapter" data-level="6.3" data-path="design.html"><a href="design.html#html-101"><i class="fa fa-check"></i><b>6.3</b> HTML 101</a></li>
+<li class="chapter" data-level="6.4" data-path="design.html"><a href="design.html#r---html"><i class="fa fa-check"></i><b>6.4</b> R -&gt; HTML</a></li>
+<li class="chapter" data-level="6.5" data-path="design.html"><a href="design.html#html-ui"><i class="fa fa-check"></i><b>6.5</b> HTML UI</a></li>
+<li class="chapter" data-level="6.6" data-path="design.html"><a href="design.html#layout"><i class="fa fa-check"></i><b>6.6</b> Layout</a></li>
+<li class="chapter" data-level="6.7" data-path="design.html"><a href="design.html#panels"><i class="fa fa-check"></i><b>6.7</b> Panels</a></li>
+<li class="chapter" data-level="6.8" data-path="design.html"><a href="design.html#css"><i class="fa fa-check"></i><b>6.8</b> CSS</a></li>
+<li class="chapter" data-level="6.9" data-path="design.html"><a href="design.html#bootstrap"><i class="fa fa-check"></i><b>6.9</b> Bootstrap</a></li>
+<li class="chapter" data-level="6.10" data-path="design.html"><a href="design.html#sass"><i class="fa fa-check"></i><b>6.10</b> Sass</a></li>
+<li class="chapter" data-level="6.11" data-path="design.html"><a href="design.html#參考資料"><i class="fa fa-check"></i><b>6.11</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>7</b> 儀表板</a></li>
+<li class="chapter" data-level="8" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>8</b> 介面與效能測試</a><ul>
+<li class="chapter" data-level="8.1" data-path="test.html"><a href="test.html#介面測試"><i class="fa fa-check"></i><b>8.1</b> 介面測試</a></li>
+<li class="chapter" data-level="8.2" data-path="test.html"><a href="test.html#效能測試"><i class="fa fa-check"></i><b>8.2</b> 效能測試</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="test.html"><a href="test.html#基準測試-benchmark"><i class="fa fa-check"></i><b>8.2.1</b> 基準測試 Benchmark</a></li>
+<li class="chapter" data-level="8.2.2" data-path="test.html"><a href="test.html#效能分析-analyze"><i class="fa fa-check"></i><b>8.2.2</b> 效能分析 Analyze</a></li>
+<li class="chapter" data-level="8.2.3" data-path="test.html"><a href="test.html#程式最佳化-optimize"><i class="fa fa-check"></i><b>8.2.3</b> 程式最佳化 Optimize</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="test.html"><a href="test.html#參考資料-1"><i class="fa fa-check"></i><b>8.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="js.html"><a href="js.html"><i class="fa fa-check"></i><b>9</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="9.1" data-path="js.html"><a href="js.html#d3.js"><i class="fa fa-check"></i><b>9.1</b> D3.js</a></li>
+<li class="chapter" data-level="9.2" data-path="js.html"><a href="js.html#javascript"><i class="fa fa-check"></i><b>9.2</b> JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="deploy.html"><a href="deploy.html"><i class="fa fa-check"></i><b>10</b> 將Shiny App上線</a></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者資訊</a></li>
+<li class="chapter" data-level="" data-path="參考資料-2.html"><a href="參考資料-2.html"><i class="fa fa-check"></i>參考資料</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">使用R Shiny設計資料科學應用程式</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="test" class="section level1">
+<h1><span class="header-section-number">Ch. 8</span> 介面與效能測試</h1>
+<div id="介面測試" class="section level2">
+<h2><span class="header-section-number">8.1</span> 介面測試</h2>
+<p>shinytest</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">library</span>(devtools)</a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="kw">install_github</span>(<span class="st">&quot;rstudio/shinytest&quot;</span>)</a>
+<a class="sourceLine" id="cb32-3" title="3">shinytest<span class="op">::</span><span class="kw">installDependencies</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">library</span>(shinytest)</a>
+<a class="sourceLine" id="cb33-2" title="2"></a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="co"># Launch the target app (replace with the correct path)</span></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="kw">recordTest</span>(<span class="st">&quot;path/to/app&quot;</span>)</a></code></pre></div>
+</div>
+<div id="效能測試" class="section level2">
+<h2><span class="header-section-number">8.2</span> 效能測試</h2>
+<p>Shiny App的效能測試通常是<strong>基準測試 Benchmark</strong>、<strong>效能分析 Analyze</strong>、<strong>建議解決方案 Recommend</strong>、<strong>程式最佳化 Optimize</strong>四個步驟的循環 ( <a href="https://tailrecursion.com/slides/fast-shiny/" target="_blank">參考資料</a> ):</p>
+<ol style="list-style-type: decimal">
+<li><strong>基準測試 Benchmark</strong>: 以一般使用者的使用方式測試系統，如果感覺不夠快，就進到下一步。若想測試多人同時使用的情境，可使用<code>shinyloadtest</code>套件<span class="citation">(Dipert, Schloerke, and Borges <a href="#ref-R-shinyloadtest" role="doc-biblioref">2020</a>)</span>進行測試</li>
+<li><strong>效能分析 Analyze</strong>: 利用工具 (如<code>profvis</code> <span class="citation">(Chang, Luraschi, and Mastny <a href="#ref-R-profvis" role="doc-biblioref">2019</a>)</span>)計算每一步所花時間，找到最花時間的步驟，可能是讀檔、計算、網路連線等</li>
+<li><strong>建議解決方案 Recommend</strong>: 針對最花時間的步驟，研擬解決的辦法，包括<strong>限制使用者的行為</strong>或是<strong>最佳化 (Optimize)程式</strong></li>
+<li><strong>程式最佳化 Optimize</strong>:</li>
+</ol>
+<ul>
+<li>需要的資料不要每次啟動應用程式都重新下載並處理，可先完成，若資料很大，建議先做預處理，不要在Shiny App中讀取大檔案</li>
+<li>注意dplyr::group_by()的使用順序，盡量在filter之後</li>
+<li>若需讀格式單純的檔案，csv比rds快</li>
+<li>若Shiny App中有一些圖是使用者會重複得到的輸出結果，可考慮用<code>plotCache()</code>存快取</li>
+<li>因放在server中的程式碼是每個session都會執行一次，</li>
+</ul>
+<p>完成測試後，就能將Shiny App正式部屬(Deploy)上線。</p>
+<div id="基準測試-benchmark" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> 基準測試 Benchmark</h3>
+<p>run app
+record
+playback
+analyze</p>
+<p>要開兩個R session，第一個session跑Shiny App，第二個session跑shinyloadtest</p>
+</div>
+<div id="效能分析-analyze" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> 效能分析 Analyze</h3>
+<p>profiling</p>
+<p>花時間的程式碼，如讀檔，grouping，aggregation等，可以在Shiny App執行前就將檔案準備好，例如把可以先跑的程式碼寫在獨立的R Script中，用排程的方式已固定的頻率重新執行，以更新資料</p>
+</div>
+<div id="程式最佳化-optimize" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> 程式最佳化 Optimize</h3>
+<p>plot caching
+畫圖很慢
+有一些圖是蠻多使用者在使用Shiny App的時候會得到的輸出結果</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">renderCachedPlot</span>({</a>
+<a class="sourceLine" id="cb34-2" title="2">  </a>
+<a class="sourceLine" id="cb34-3" title="3">},<span class="dt">cacheKeyExpr =</span> {</a>
+<a class="sourceLine" id="cb34-4" title="4">  </a>
+<a class="sourceLine" id="cb34-5" title="5">})</a>
+<a class="sourceLine" id="cb34-6" title="6"><span class="kw">renderPlot</span>()</a></code></pre></div>
+<p>shinyloadtest
+profvis</p>
+<p>Async</p>
+<p>shinyloadtest -&gt; profvis -&gt; Optimize -&gt; Deploy</p>
+<p>shinyloadtest</p>
+</div>
+</div>
+<div id="參考資料-1" class="section level2">
+<h2><span class="header-section-number">8.3</span> 參考資料</h2>
+<ul>
+<li><a href="https://rstudio.github.io/shinytest/articles/shinytest.html" target="_blank">Getting started with shinytest</a></li>
+<li><a href="http://bit.ly/shiny-prod-book" target="_blank">Shiny in Production</a></li>
+<li><a href="https://tailrecursion.com/slides/fast-shiny/" target="_blank">Make Shiny Fast</a></li>
+</ul>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-profvis">
+<p>Chang, Winston, Javier Luraschi, and Timothy Mastny. 2019. <em>Profvis: Interactive Visualizations for Profiling R Code</em>. <a href="https://CRAN.R-project.org/package=profvis">https://CRAN.R-project.org/package=profvis</a>.</p>
+</div>
+<div id="ref-R-shinyloadtest">
+<p>Dipert, Alan, Barret Schloerke, and Barbara Borges. 2020. <em>Shinyloadtest: Load Test Shiny Applications</em>. <a href="https://CRAN.R-project.org/package=shinyloadtest">https://CRAN.R-project.org/package=shinyloadtest</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="js.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "Microsoft JhengHei",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

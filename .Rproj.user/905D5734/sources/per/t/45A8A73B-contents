@@ -1,0 +1,68 @@
+--- 
+title: "使用R Shiny設計資料科學應用程式"
+author: "曾意儒 Yi-Ju Tseng"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+output: 
+  bookdown::gitbook:
+    config:
+      fontsettings:
+        family: Microsoft JhengHei
+      download: null
+description: "使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application"
+---
+```{r setup, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, formatR.indent = 2, width = 80, digits = 2
+)
+
+pkg<-c('tidyverse','shiny','rsconnect','shinythemes','shinydashboard')#,''
+ipak <- function(pkg){
+    new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+    if (length(new.pkg)) 
+        install.packages(new.pkg, dependencies = TRUE)
+    sapply(pkg, require, character.only = TRUE)
+}
+
+ipak(pkg)
+```
+
+# {- #preface}
+
+本書介如何使用[R語言](https://www.r-project.org/){target="_blank"}以及[Shiny App](https://shiny.rstudio.com/){target="_blank"}開發資料科學相關的**網頁應用程式**，包括**互動式圖表**、**儀表板**、**互動式資料分析服務**等。
+
+如要一次安裝所有本書會使用到的套件，可在R內執行以下程式碼：
+```{r eval=F}
+install.packages("devtools")
+devtools::install_github("yijutseng/DataSciencewithRShinyBook")
+```
+
+
+如果您想修改文字或範例，歡迎透過[GitHub](https://github.com/yijutseng/DataSciencewithRShinyBook/issues){target="_blank"} issue提供建議與回饋。
+
+本書程式碼執行環境：
+```{r}
+sessionInfo()
+```
+
+本書使用套件版本：
+```{r echo=F}
+pkgInfo<-lapply(pkg, packageDescription, fields = c("Package", "Version"))
+knitr::kable(data.frame(Package=sapply(pkgInfo, `[[`, 1),
+  Version=sapply(pkgInfo, `[[`, 2)))
+```
+
+
+本著作係採用創用 CC 姓名標示-非商業性-禁止改作 3.0 台灣 授權條款授權。
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), pkg
+), 'packages.bib')
+```
