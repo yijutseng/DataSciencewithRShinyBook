@@ -1,0 +1,83 @@
+# 輸出 Outputs {#output}
+
+## 內建輸出元件
+
+如同輸入函數，輸出函數也有共通的特性與使用方式，輸出函數的組成通常為 `xxxOutput()`，`xxx`為輸入的型式，如`plot`等，常見的輸出元件函數如下：
+
+1. 表格類
+
+  - `dataTableOutput()`: 表格，使用DataTables JavaScript套件製作表格
+  - `tableOutput()`:	表格，使用`xtable`製作表格
+
+2. 圖片類
+
+  - `imageOutput()`:	經由超連結存取圖片
+  - `plotOutput()`:	由R所產生的圖片
+
+3. HTML類
+
+  - `htmlOutput()`:	HTML
+  - `uiOutput()`:	HTML
+
+4. 文字類
+
+  - `textOutput()`:	一般文字，類似HTML的<div></div>
+  - `verbatimTextOutput()`: 文字，類似HTML的<pre></pre>，使用固定寬度的的文字，且不會修改換行跟空格等，適合呈現程式碼等格式固定的文字
+  
+
+輸出函數的共用參數參數只有`outputId`，為輸出元件的名稱，為每個元件取合理且唯一的名稱，才可在Shiny App程式中取用。
+
+以`textOutput()`和`dataTableOutput()`為例，在指定`outputId`後，將各輸出元件擺在需要的位置：
+
+```{r eval=F}
+fluidPage( #頁面設定函數
+  titlePanel("My First Shiny App"), #標題版面(panel)
+  sidebarLayout( #版型(layout)
+    sidebarPanel( #側邊欄位版面(panel)
+      sliderInput( #輸入元件函數
+        inputId = "num",
+        label ="Choose a number",
+        min = 0, max = 100, 
+        value =25
+      )
+    ), 
+    mainPanel(
+      textOutput(outputId="textBox"),
+      dataTableOutput(outputId="dataTable")
+    ) #主頁版面(panel)
+  )
+)
+```
+
+在`Output()`函數中，`outputId=`常被省略，只留下函數名稱。執行上述程式碼，會發現畫面中沒有文字與表格，那是因為文字和表格等輸出元件需要由伺服器程式碼（後端server，參考下一章節 \@ref(server) ）指定內容後，才能依內容呈現。
+
+## 其他常用輸出元件
+
+### 動態表格
+
+**撰寫中**
+`DT`套件
+
+### 動態地圖
+
+**撰寫中**
+Leaflet
+leafletjs
+`leaflet`套件
+```{r eval=F}
+install.packages("leaflet")
+library(leaflet)
+```
+
+```{r}
+library(leaflet)
+leaflet() %>% addTiles() %>%
+  setView(121.388396, 25.034548, zoom=17)
+```
+
+在Shiny App/Dashboard 使用 leaflet 地圖
+
+
+## 參考資料
+- [Learn Shiny](https://shiny.rstudio.com/tutorial/){target="_blank"}
+- [Display reactive output](https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/){target="_blank"}

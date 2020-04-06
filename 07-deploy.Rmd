@@ -1,0 +1,50 @@
+# 將Shiny App上線 {#deploy}
+
+完成Shiny App的撰寫後，即可將Shiny App放上網路，供大家使用，使用Shiny app可以不用安裝R，並且一般的瀏覽器即可開啟。將Shiny放上網路(上線)有下列幾種方式: 
+
+1. [shinyapps.io](https://www.shinyapps.io/){target="_blank"}
+
+  - 最簡單無腦的方法，推薦新手練功使用
+  - 將Shiny App架在RStudio提供的伺服器上
+  - 在一定使用量且公開應用程式的情況下**免費**
+  - 若超過免費使用額度或是需要特殊功能，有多種[付費套組](https://www.shinyapps.io/){target="_blank"}可供選擇
+  - 需要安裝[rsconnect套件](https://github.com/rstudio/rsconnect){target="_blank"}
+  - 官方參考文件 [shinyapps.io user guide - Getting Started](https://docs.rstudio.com/shinyapps.io/getting-started.html){target="_blank"}
+
+為確保安裝的`rsconnect`套件為最新版，建議可透過GitHub裝開發版，功能較新且齊全:
+
+```{r eval=F}
+install.packages("devtools")
+devtools::install_github("rstudio/rsconnect")
+```
+
+2. Shiny Server
+
+  - 將Shiny App架在自己的伺服器上
+  - 目前只可安裝在linux伺服器，若無linux伺服器，可考慮使用雲端服務，如[AWS](https://aws.amazon.com/tw/){target="_blank"}、[Google Cloud Service](https://cloud.google.com/gcp/){target="_blank"}等，上述服務都有免費試用額度，若你有教師或學生身分，可申請[AWS Educate](https://aws.amazon.com/tw/education/awseducate/){target="_blank"}，每年都會提供一定的免費使用額度，且不用信用卡就能註冊帳號，方便還沒有信用卡的學生申請，也因此我在蠻多課程中使用[AWS Educate](https://aws.amazon.com/tw/education/awseducate/){target="_blank"}的伺服器或是資料庫等服務。
+  - 為免費軟體 (AGPL v3)
+    - 沒有授權跟SSL功能，偏私人且需要管理權限的的服務不建議使用此免費版本，除非有其他方式可控管
+    - 每個App只會有一個R session，如果會有很多使用者同時使用你的Shiny App，不建議使用
+  
+3. Shiny Server Pro
+
+  - 可將Shiny App架在自己的伺服器上
+  - 目前只可安裝在linux伺服器，若無linux伺服器，可考慮使用雲端服務，如[AWS](https://aws.amazon.com/tw/){target="_blank"}、[Google Cloud Service](https://cloud.google.com/gcp/){target="_blank"}等
+  - 為收費軟體，與Shiny Server免費版的差異是：
+    - 有授權機制且有SSL
+    - 每個Shiny App可有多個R session，在較多使用者的情況下，效能會顯著提升
+    - 有管理者監控儀表板服務
+  - 提供[教育授權](https://rstudio.com/pricing/academic-pricing/){target="_blank"}，可在官方網頁填單申請
+
+
+4. [RStudio Connect](https://rstudio.com/products/connect/){target="_blank"}
+
+  - 將Shiny App架在自己的伺服器上，但比Shiny Server和Shiny Server Pro容易上手，因此也貴很多
+  - 為付費服務，適合提供資料分析/科學服務或研究的機構使用，有許多整合型的功能，包括使用者權限管理等，均可使用管理者介面設定
+  - 與Shiny Server不同的是，除了Shiny App外，RStudio Connect還可放R Markdown, Plumber API's, 以及 Jupyter Notebooks等
+  - 有多種[收費方案](https://rstudio.com/pricing/individual-products/){target="_blank"}
+  - 提供[教育授權](https://rstudio.com/pricing/academic-pricing/){target="_blank"}，可在官方網頁填單申請
+  
+上述服務的比較，也可參考RStudio的官方文章 [What is the difference between RStudio Connect, Shiny Server Pro, and Shinyapps.io?](https://support.rstudio.com/hc/en-us/articles/217240558-What-is-the-difference-between-RStudio-Connect-Shiny-Server-Pro-and-Shinyapps-io-){target="_blank"}
+
+

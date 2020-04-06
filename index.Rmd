@@ -16,6 +16,7 @@ output:
       download: null
 description: "使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application"
 ---
+
 ```{r setup, include=FALSE}
 options(
   htmltools.dir.version = FALSE, formatR.indent = 2, width = 80, digits = 2
@@ -35,7 +36,9 @@ ipak(pkg)
 
 # {- #preface}
 
-本書介如何使用[R語言](https://www.r-project.org/){target="_blank"}以及[Shiny App](https://shiny.rstudio.com/){target="_blank"}開發資料科學相關的**網頁應用程式**，包括**互動式圖表**、**儀表板**、**互動式資料分析服務**等。
+本書介如何使用[R語言](https://www.r-project.org/){target="_blank"}以及[Shiny App](https://shiny.rstudio.com/){target="_blank"}開發資料科學相關的**網頁應用程式**，包括**互動式圖表**、**儀表板**、**互動式資料分析服務**等，大部分內容由[RStudio官方教學](https://shiny.rstudio.com/tutorial/){target="_blank"}與[Shiny文件](https://shiny.rstudio.com/reference/shiny/1.4.0/)統整翻譯而成。
+
+本書仍在草稿撰寫階段，已完成第1至5章，後續章節逐步更新中。
 
 如要一次安裝所有本書會使用到的套件，可在R內執行以下程式碼：
 ```{r eval=F}
@@ -44,7 +47,7 @@ devtools::install_github("yijutseng/DataSciencewithRShinyBook")
 ```
 
 
-如果您想修改文字或範例，歡迎透過[GitHub](https://github.com/yijutseng/DataSciencewithRShinyBook/issues){target="_blank"} issue提供建議與回饋。
+如果您想修改文字或範例，歡迎透過 [GitHub](https://github.com/yijutseng/DataSciencewithRShinyBook/issues){target="_blank"} issue提供建議與回饋。
 
 本書程式碼執行環境：
 ```{r}

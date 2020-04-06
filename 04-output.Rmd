@@ -1,4 +1,0 @@
-# 輸出 Outputs {#output}
-
-如同輸入函數，輸出函數也有共通的特性與使用方式，輸出函數的組成通常為 `xxxOutput()`，`xxx`為輸入的型式，如`plot`等，函數參數包括`outputId`:
-- outputId: 為輸出元件的名稱，為每個元件取合理且唯一的名稱，才可在Shiny App程式中取用

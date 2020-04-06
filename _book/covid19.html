@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Ch 10 新冠肺炎儀表板範例 | 使用R Shiny設計資料科學應用程式</title>
+  <meta name="description" content="Ch 10 新冠肺炎儀表板範例 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Ch 10 新冠肺炎儀表板範例 | 使用R Shiny設計資料科學應用程式" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ch 10 新冠肺炎儀表板範例 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ch 10 新冠肺炎儀表板範例 | 使用R Shiny設計資料科學應用程式" />
+  
+  <meta name="twitter:description" content="Ch 10 新冠肺炎儀表板範例 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  
+
+<meta name="author" content="曾意儒 Yi-Ju Tseng" />
+
+
+<meta name="date" content="2020-04-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dashboard.html"/>
+<link rel="next" href="js.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet/leaflet.js"></script>
+<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">使用R Shiny設計資料科學應用程式</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#preface"></a></li>
+<li class="part"><span><b>I 快速上手</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 前言</a></li>
+<li class="chapter" data-level="2" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>2</b> Shiny App架構</a><ul>
+<li class="chapter" data-level="2.1" data-path="structure.html"><a href="structure.html#單一整合程式-app.r"><i class="fa fa-check"></i><b>2.1</b> 單一整合程式 app.R</a></li>
+<li class="chapter" data-level="2.2" data-path="structure.html"><a href="structure.html#使用者介面-user-interface"><i class="fa fa-check"></i><b>2.2</b> 使用者介面 (User Interface)</a></li>
+<li class="chapter" data-level="2.3" data-path="structure.html"><a href="structure.html#伺服器端程式-server-instruction"><i class="fa fa-check"></i><b>2.3</b> 伺服器端程式 (Server Instruction)</a></li>
+<li class="chapter" data-level="2.4" data-path="structure.html"><a href="structure.html#script"><i class="fa fa-check"></i><b>2.4</b> 除了前後端以外的程式碼</a></li>
+<li class="chapter" data-level="2.5" data-path="structure.html"><a href="structure.html#參考資料"><i class="fa fa-check"></i><b>2.5</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="layout.html"><a href="layout.html"><i class="fa fa-check"></i><b>3</b> 版面設定</a><ul>
+<li class="chapter" data-level="3.1" data-path="layout.html"><a href="layout.html#頁面設定函數xxxpage"><i class="fa fa-check"></i><b>3.1</b> 頁面設定函數xxxPage()</a></li>
+<li class="chapter" data-level="3.2" data-path="layout.html"><a href="layout.html#xxxlayout-和-xxxpanel"><i class="fa fa-check"></i><b>3.2</b> xxxLayout() 和 xxxPanel()</a></li>
+<li class="chapter" data-level="3.3" data-path="layout.html"><a href="layout.html#row"><i class="fa fa-check"></i><b>3.3</b> row 與 column</a></li>
+<li class="chapter" data-level="3.4" data-path="layout.html"><a href="layout.html#參考資料-1"><i class="fa fa-check"></i><b>3.4</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="input.html"><a href="input.html"><i class="fa fa-check"></i><b>4</b> 輸入Inputs</a><ul>
+<li class="chapter" data-level="4.1" data-path="input.html"><a href="input.html#參考資料-2"><i class="fa fa-check"></i><b>4.1</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>5</b> 輸出 Outputs</a><ul>
+<li class="chapter" data-level="5.1" data-path="output.html"><a href="output.html#內建輸出元件"><i class="fa fa-check"></i><b>5.1</b> 內建輸出元件</a></li>
+<li class="chapter" data-level="5.2" data-path="output.html"><a href="output.html#其他常用輸出元件"><i class="fa fa-check"></i><b>5.2</b> 其他常用輸出元件</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="output.html"><a href="output.html#動態表格"><i class="fa fa-check"></i><b>5.2.1</b> 動態表格</a></li>
+<li class="chapter" data-level="5.2.2" data-path="output.html"><a href="output.html#動態地圖"><i class="fa fa-check"></i><b>5.2.2</b> 動態地圖</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="output.html"><a href="output.html#參考資料-3"><i class="fa fa-check"></i><b>5.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>6</b> 伺服器端程式 Server</a><ul>
+<li class="chapter" data-level="6.1" data-path="server.html"><a href="server.html#渲染函數-render-function"><i class="fa fa-check"></i><b>6.1</b> 渲染函數 Render function</a></li>
+<li class="chapter" data-level="6.2" data-path="server.html"><a href="server.html#reactive"><i class="fa fa-check"></i><b>6.2</b> 反應函數 Reactive function</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="server.html"><a href="server.html#反應函數-reactive"><i class="fa fa-check"></i><b>6.2.1</b> 反應函數 reactive()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="server.html"><a href="server.html#不反應-isolate"><i class="fa fa-check"></i><b>6.2.2</b> 不反應 isolate()</a></li>
+<li class="chapter" data-level="6.2.3" data-path="server.html"><a href="server.html#按鈕觸發-observeevent"><i class="fa fa-check"></i><b>6.2.3</b> 按鈕觸發 observeEvent()</a></li>
+<li class="chapter" data-level="6.2.4" data-path="server.html"><a href="server.html#延遲反應-eventreactive"><i class="fa fa-check"></i><b>6.2.4</b> 延遲反應 eventReactive()</a></li>
+<li class="chapter" data-level="6.2.5" data-path="server.html"><a href="server.html#reactivevalues"><i class="fa fa-check"></i><b>6.2.5</b> reactiveValues()</a></li>
+<li class="chapter" data-level="6.2.6" data-path="server.html"><a href="server.html#reactivetimer"><i class="fa fa-check"></i><b>6.2.6</b> reactiveTimer()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="server.html"><a href="server.html#參考資料-4"><i class="fa fa-check"></i><b>6.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploy.html"><a href="deploy.html"><i class="fa fa-check"></i><b>7</b> 將Shiny App上線</a></li>
+<li class="part"><span><b>II 進階內容</b></span></li>
+<li class="chapter" data-level="8" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>8</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="8.1" data-path="design.html"><a href="design.html#樣式模板"><i class="fa fa-check"></i><b>8.1</b> 樣式模板</a></li>
+<li class="chapter" data-level="8.2" data-path="design.html"><a href="design.html#r---html"><i class="fa fa-check"></i><b>8.2</b> R -&gt; HTML</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="design.html"><a href="design.html#html-101"><i class="fa fa-check"></i><b>8.2.1</b> HTML 101</a></li>
+<li class="chapter" data-level="8.2.2" data-path="design.html"><a href="design.html#在r中撰寫html"><i class="fa fa-check"></i><b>8.2.2</b> 在R中撰寫HTML</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="design.html"><a href="design.html#css"><i class="fa fa-check"></i><b>8.3</b> CSS</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="design.html"><a href="design.html#bootstrap-and-sass"><i class="fa fa-check"></i><b>8.3.1</b> Bootstrap and Sass</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="design.html"><a href="design.html#參考資料-5"><i class="fa fa-check"></i><b>8.4</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>9</b> 儀表板</a><ul>
+<li class="chapter" data-level="9.1" data-path="dashboard.html"><a href="dashboard.html#開發儀表板步驟"><i class="fa fa-check"></i><b>9.1</b> 開發儀表板步驟</a></li>
+<li class="chapter" data-level="9.2" data-path="dashboard.html"><a href="dashboard.html#儀表板樣式設計"><i class="fa fa-check"></i><b>9.2</b> 儀表板樣式設計</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dashboard.html"><a href="dashboard.html#dashboardpage"><i class="fa fa-check"></i><b>9.2.1</b> dashboardPage()</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dashboard.html"><a href="dashboard.html#標頭"><i class="fa fa-check"></i><b>9.2.2</b> 標頭</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dashboard.html"><a href="dashboard.html#側邊欄位"><i class="fa fa-check"></i><b>9.2.3</b> 側邊欄位</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dashboard.html"><a href="dashboard.html#主頁面"><i class="fa fa-check"></i><b>9.2.4</b> 主頁面</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dashboard.html"><a href="dashboard.html#參考資料-6"><i class="fa fa-check"></i><b>9.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="covid19.html"><a href="covid19.html"><i class="fa fa-check"></i><b>10</b> 新冠肺炎儀表板範例</a><ul>
+<li class="chapter" data-level="10.1" data-path="covid19.html"><a href="covid19.html#儀表板主要架構"><i class="fa fa-check"></i><b>10.1</b> 儀表板主要架構</a></li>
+<li class="chapter" data-level="10.2" data-path="covid19.html"><a href="covid19.html#流行地圖-ui"><i class="fa fa-check"></i><b>10.2</b> 流行地圖 UI</a></li>
+<li class="chapter" data-level="10.3" data-path="covid19.html"><a href="covid19.html#各國圖表-ui"><i class="fa fa-check"></i><b>10.3</b> 各國圖表 UI</a></li>
+<li class="chapter" data-level="10.4" data-path="covid19.html"><a href="covid19.html#伺服器端程式"><i class="fa fa-check"></i><b>10.4</b> 伺服器端程式</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="covid19.html"><a href="covid19.html#ui文字設定"><i class="fa fa-check"></i><b>10.4.1</b> UI文字設定</a></li>
+<li class="chapter" data-level="10.4.2" data-path="covid19.html"><a href="covid19.html#ui圖表設定"><i class="fa fa-check"></i><b>10.4.2</b> UI圖表設定</a></li>
+<li class="chapter" data-level="10.4.3" data-path="covid19.html"><a href="covid19.html#更新圖片的反應函數"><i class="fa fa-check"></i><b>10.4.3</b> 更新圖片的反應函數</a></li>
+<li class="chapter" data-level="10.4.4" data-path="covid19.html"><a href="covid19.html#更新資料的反應函數"><i class="fa fa-check"></i><b>10.4.4</b> 更新資料的反應函數</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="covid19.html"><a href="covid19.html#資料整理獨立程式碼"><i class="fa fa-check"></i><b>10.5</b> 資料整理獨立程式碼</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="js.html"><a href="js.html"><i class="fa fa-check"></i><b>11</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="11.1" data-path="js.html"><a href="js.html#d3.js"><i class="fa fa-check"></i><b>11.1</b> D3.js</a></li>
+<li class="chapter" data-level="11.2" data-path="js.html"><a href="js.html#javascript"><i class="fa fa-check"></i><b>11.2</b> JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>12</b> 介面與效能測試</a><ul>
+<li class="chapter" data-level="12.1" data-path="test.html"><a href="test.html#介面測試"><i class="fa fa-check"></i><b>12.1</b> 介面測試</a></li>
+<li class="chapter" data-level="12.2" data-path="test.html"><a href="test.html#效能測試"><i class="fa fa-check"></i><b>12.2</b> 效能測試</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="test.html"><a href="test.html#基準測試-benchmark"><i class="fa fa-check"></i><b>12.2.1</b> 基準測試 Benchmark</a></li>
+<li class="chapter" data-level="12.2.2" data-path="test.html"><a href="test.html#效能分析-analyze"><i class="fa fa-check"></i><b>12.2.2</b> 效能分析 Analyze</a></li>
+<li class="chapter" data-level="12.2.3" data-path="test.html"><a href="test.html#程式最佳化-optimize"><i class="fa fa-check"></i><b>12.2.3</b> 程式最佳化 Optimize</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="test.html"><a href="test.html#參考資料-7"><i class="fa fa-check"></i><b>12.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者資訊</a></li>
+<li class="chapter" data-level="" data-path="-8.html"><a href="-8.html"><i class="fa fa-check"></i>參考資料</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">使用R Shiny設計資料科學應用程式</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="covid19" class="section level1">
+<h1><span class="header-section-number">Ch 10</span> 新冠肺炎儀表板範例</h1>
+<p>儀表板Demo網址: <a href="http://shiny.yjtseng.info/content/18/" class="uri">http://shiny.yjtseng.info/content/18/</a></p>
+<p>本章節以2019年末至2020年的新冠肺炎 (COVID-19)流行趨勢儀表板作為Shiny App的開發與應用範例。本範例包括三個主要分頁，<strong>流行地圖</strong>、<strong>案例數、死亡數較多的的國家圖表</strong>以及<strong>所選國家圖表</strong>，畫面如下所示：</p>
+<p>地圖：
+<img src="figure/covid19map.png" width="795" /></p>
+<p>排名前N名的國家圖表：
+<img src="figure/covid19topN.png" width="784" /></p>
+<p>自選國家圖表：
+<img src="figure/covid19select.png" width="786" /></p>
+<p>以下章節會拆解此Shiny App的原始碼，分段講解如何開發此新冠肺炎 (COVID-19)流行趨勢儀表板，建議先看完前幾個章節後，再閱讀此範例解說，會比較清楚。</p>
+<div id="儀表板主要架構" class="section level2">
+<h2><span class="header-section-number">10.1</span> 儀表板主要架構</h2>
+<p>此儀表板直接使用<code>shinydashboard</code><span class="citation">(Chang and Borges Ribeiro <a href="#ref-R-shinydashboard">2018</a>)</span>套件開發，在使用者介面端，使用預設頁面設定函數<code>dashboardPage()</code>建構，函數中包括儀表板標頭 (header) <code>dashboardHeader()</code>、側邊選單 (sidebar) <code>dashboardSidebar()</code> 以及主頁面 (body) <code>dashboardBody()</code> 等三個部分。</p>
+<ul>
+<li><strong>儀表板標頭 (header)</strong> <code>dashboardHeader()</code>並未作太特殊的設定</li>
+<li><strong>側邊選單 (sidebar)</strong> <code>dashboardSidebar()</code>中包含四個選單，分別是<strong>流行地圖</strong> <code>map_tab</code>、<strong>案例數、死亡數較多的的國家圖表</strong> <code>chart_top_tab</code>、<strong>所選國家圖表</strong> <code>chart_sel_tab</code>以及<strong>參考資料</strong> <code>ref_tab</code></li>
+<li><strong>主頁面 (body)</strong> <code>dashboardBody()</code> 則是對應側邊欄位的四個選單，分別設定四個<code>tabItem</code>，並用<code>fluidRow()</code>排版，因此部分內容較多，<strong>~code code code~</strong>部分程式碼在後方章節說明</li>
+</ul>
+<p>主要架構如下方程式碼:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">    <span class="co">########################################################################################</span></a>
+<a class="sourceLine" id="cb64-3" data-line-number="3">    <span class="co"># UI Header, simple header</span></a>
+<a class="sourceLine" id="cb64-4" data-line-number="4">    <span class="co">########################################################################################</span></a>
+<a class="sourceLine" id="cb64-5" data-line-number="5">    <span class="kw">dashboardHeader</span>(<span class="dt">title=</span><span class="st">&quot;COVID-19 Dashboard&quot;</span>),</a>
+<a class="sourceLine" id="cb64-6" data-line-number="6">    <span class="co">########################################################################################</span></a>
+<a class="sourceLine" id="cb64-7" data-line-number="7">    <span class="co"># UI Sidebar</span></a>
+<a class="sourceLine" id="cb64-8" data-line-number="8">    <span class="co">########################################################################################</span></a>
+<a class="sourceLine" id="cb64-9" data-line-number="9">    <span class="kw">dashboardSidebar</span>(</a>
+<a class="sourceLine" id="cb64-10" data-line-number="10">        <span class="kw">sidebarMenu</span>(</a>
+<a class="sourceLine" id="cb64-11" data-line-number="11">            <span class="kw">menuItem</span>(<span class="st">&quot;Map&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;map_tab&quot;</span>, </a>
+<a class="sourceLine" id="cb64-12" data-line-number="12">                     <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;map-marked&quot;</span>)),</a>
+<a class="sourceLine" id="cb64-13" data-line-number="13">            <span class="kw">hr</span>(),</a>
+<a class="sourceLine" id="cb64-14" data-line-number="14">            <span class="kw">menuItem</span>(<span class="st">&quot;Chart, Top N&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;chart_top_tab&quot;</span>, </a>
+<a class="sourceLine" id="cb64-15" data-line-number="15">                     <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;chart-bar&quot;</span>)),</a>
+<a class="sourceLine" id="cb64-16" data-line-number="16">            <span class="kw">menuItem</span>(<span class="st">&quot;Chart, Selected Countries&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;chart_sel_tab&quot;</span>, </a>
+<a class="sourceLine" id="cb64-17" data-line-number="17">                     <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;chart-bar&quot;</span>)),</a>
+<a class="sourceLine" id="cb64-18" data-line-number="18">            <span class="kw">menuItem</span>(<span class="st">&quot;Reference&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;ref_tab&quot;</span>, </a>
+<a class="sourceLine" id="cb64-19" data-line-number="19">                     <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;info-circle&quot;</span>))</a>
+<a class="sourceLine" id="cb64-20" data-line-number="20">        )</a>
+<a class="sourceLine" id="cb64-21" data-line-number="21">    ),</a>
+<a class="sourceLine" id="cb64-22" data-line-number="22">    <span class="co">########################################################################################</span></a>
+<a class="sourceLine" id="cb64-23" data-line-number="23">    <span class="co"># UI Body, style setting and tabItems with 4 tabItem (match menu)</span></a>
+<a class="sourceLine" id="cb64-24" data-line-number="24">    <span class="co">########################################################################################</span></a>
+<a class="sourceLine" id="cb64-25" data-line-number="25">    <span class="kw">dashboardBody</span>(</a>
+<a class="sourceLine" id="cb64-26" data-line-number="26">        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb64-27" data-line-number="27">            <span class="kw">tabItems</span>(</a>
+<a class="sourceLine" id="cb64-28" data-line-number="28">                <span class="kw">tabItem</span>(<span class="st">&quot;map_tab&quot;</span>,<span class="kw">fluidRow</span>(<span class="op">~</span>code code code<span class="op">~</span>)),</a>
+<a class="sourceLine" id="cb64-29" data-line-number="29">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_top_tab&quot;</span>,<span class="kw">fluidRow</span>(<span class="op">~</span>code code code<span class="op">~</span>)),</a>
+<a class="sourceLine" id="cb64-30" data-line-number="30">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_sel_tab&quot;</span>,<span class="kw">fluidRow</span>(<span class="op">~</span>code code code<span class="op">~</span>)),</a>
+<a class="sourceLine" id="cb64-31" data-line-number="31">                <span class="kw">tabItem</span>(<span class="st">&quot;ref_tab&quot;</span>,<span class="kw">fluidRow</span>(<span class="op">~</span>code code code<span class="op">~</span>))</a>
+<a class="sourceLine" id="cb64-32" data-line-number="32">            )</a>
+<a class="sourceLine" id="cb64-33" data-line-number="33">        )</a>
+<a class="sourceLine" id="cb64-34" data-line-number="34">    )</a>
+<a class="sourceLine" id="cb64-35" data-line-number="35">)</a></code></pre></div>
+</div>
+<div id="流行地圖-ui" class="section level2">
+<h2><span class="header-section-number">10.2</span> 流行地圖 UI</h2>
+<p><img src="figure/covid19map.png" width="795" /></p>
+<p>由上圖可知，此流行地圖是由一個日期的滑動軸<code>sliderInput</code>、單選選單<code>radioButtons</code>、兩個數值方塊<code>uiOutput</code>以及最重要的地圖<code>leafletOutput</code>所組成。</p>
+<p>以下方簡化過的程式碼做說明，首先用兩個<code>fluidRow</code>將上方選單與案例數值區塊與下方地圖區塊分開，<strong>上方區塊</strong>先使用一個<code>box</code>以及兩個<code>uiOutput</code>排版，<code>box</code>的寬度為8，兩個<code>uiOutput</code>的寬度各為2，留在伺服器端程式設定，相加起來 (8+2+2=12)為12。<code>box</code>中放置兩個<code>column</code>排版，分別放入日期的滑動軸<code>sliderInput</code>以及單選選單<code>radioButtons</code>，寬度各為5和7，一樣加起來要是12。<strong>下方區塊</strong>則相較單純，只用了<code>wellPanel</code>排版，並放入<code>leafletOutput</code>顯示地圖。</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">    <span class="kw">dashboardBody</span>(</a>
+<a class="sourceLine" id="cb65-3" data-line-number="3">        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb65-4" data-line-number="4">            <span class="kw">tabItems</span>(</a>
+<a class="sourceLine" id="cb65-5" data-line-number="5">                <span class="kw">tabItem</span>(<span class="st">&quot;map_tab&quot;</span>,</a>
+<a class="sourceLine" id="cb65-6" data-line-number="6">                        <span class="co"># info above map</span></a>
+<a class="sourceLine" id="cb65-7" data-line-number="7">                        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb65-8" data-line-number="8">                            <span class="co"># box with slider and radio buttom for period selection</span></a>
+<a class="sourceLine" id="cb65-9" data-line-number="9">                            <span class="kw">box</span>(<span class="kw">column</span>(<span class="kw">sliderInput</span>(<span class="op">~</span>code code code<span class="op">~</span>),</a>
+<a class="sourceLine" id="cb65-10" data-line-number="10">                                       <span class="dt">width=</span><span class="dv">5</span>,<span class="dt">offset=</span><span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb65-11" data-line-number="11">                                <span class="kw">column</span>(<span class="kw">radioButtons</span>(<span class="op">~</span>code code code<span class="op">~</span>),</a>
+<a class="sourceLine" id="cb65-12" data-line-number="12">                                       <span class="dt">width=</span><span class="dv">7</span>),</a>
+<a class="sourceLine" id="cb65-13" data-line-number="13">                                <span class="dt">width=</span><span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb65-14" data-line-number="14">                            <span class="co"># 2 value boxes with case and death number</span></a>
+<a class="sourceLine" id="cb65-15" data-line-number="15">                            <span class="kw">uiOutput</span>(<span class="st">&quot;total_case&quot;</span>),</a>
+<a class="sourceLine" id="cb65-16" data-line-number="16">                            <span class="kw">uiOutput</span>(<span class="st">&quot;total_death&quot;</span>)</a>
+<a class="sourceLine" id="cb65-17" data-line-number="17">                        ),</a>
+<a class="sourceLine" id="cb65-18" data-line-number="18">                        <span class="co"># map</span></a>
+<a class="sourceLine" id="cb65-19" data-line-number="19">                        <span class="kw">fluidRow</span>(<span class="kw">wellPanel</span>(<span class="kw">leafletOutput</span>(<span class="st">&quot;case_map&quot;</span>)))</a>
+<a class="sourceLine" id="cb65-20" data-line-number="20">                ), <span class="co"># tabItem 1 (map) end </span></a>
+<a class="sourceLine" id="cb65-21" data-line-number="21">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_top_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>), <span class="co"># tabItem 2 (top N chart)  </span></a>
+<a class="sourceLine" id="cb65-22" data-line-number="22">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_sel_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>), <span class="co"># tabItem 3 (selected countries chart)  </span></a>
+<a class="sourceLine" id="cb65-23" data-line-number="23">                <span class="kw">tabItem</span>(<span class="st">&quot;ref_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>) <span class="co"># tabItem 4 (reference)  </span></a>
+<a class="sourceLine" id="cb65-24" data-line-number="24">            )</a>
+<a class="sourceLine" id="cb65-25" data-line-number="25">        )</a>
+<a class="sourceLine" id="cb65-26" data-line-number="26">    )</a>
+<a class="sourceLine" id="cb65-27" data-line-number="27">)</a></code></pre></div>
+<p>完整的程式碼如下:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</a>
+<a class="sourceLine" id="cb66-2" data-line-number="2">    <span class="kw">dashboardBody</span>(</a>
+<a class="sourceLine" id="cb66-3" data-line-number="3">        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb66-4" data-line-number="4">            <span class="kw">tabItems</span>(</a>
+<a class="sourceLine" id="cb66-5" data-line-number="5">                <span class="kw">tabItem</span>(<span class="st">&quot;map_tab&quot;</span>,</a>
+<a class="sourceLine" id="cb66-6" data-line-number="6">                        <span class="co"># info above map</span></a>
+<a class="sourceLine" id="cb66-7" data-line-number="7">                        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb66-8" data-line-number="8">                            <span class="co"># box with slider and radio buttom for period selection</span></a>
+<a class="sourceLine" id="cb66-9" data-line-number="9">                            <span class="kw">box</span>(<span class="kw">column</span>( </a>
+<a class="sourceLine" id="cb66-10" data-line-number="10">                                <span class="kw">sliderInput</span>(<span class="st">&quot;period&quot;</span>,</a>
+<a class="sourceLine" id="cb66-11" data-line-number="11">                                            <span class="st">&quot;Data period:&quot;</span>,</a>
+<a class="sourceLine" id="cb66-12" data-line-number="12">                                            <span class="dt">min =</span> <span class="kw">min</span>(covid_country_long<span class="op">$</span>Date),</a>
+<a class="sourceLine" id="cb66-13" data-line-number="13">                                            <span class="dt">max =</span> <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date),</a>
+<a class="sourceLine" id="cb66-14" data-line-number="14">                                            <span class="dt">value=</span><span class="kw">c</span>(<span class="kw">min</span>(covid_country_long<span class="op">$</span>Date),</a>
+<a class="sourceLine" id="cb66-15" data-line-number="15">                                                    <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)),</a>
+<a class="sourceLine" id="cb66-16" data-line-number="16">                                            <span class="dt">timeFormat=</span><span class="st">&quot;%Y/%m/%d&quot;</span>),</a>
+<a class="sourceLine" id="cb66-17" data-line-number="17">                                <span class="dt">width=</span><span class="dv">5</span>,<span class="dt">offset=</span><span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb66-18" data-line-number="18">                                <span class="kw">column</span>(</a>
+<a class="sourceLine" id="cb66-19" data-line-number="19">                                    <span class="kw">radioButtons</span>(<span class="st">&quot;period_quick&quot;</span>,<span class="dt">label =</span> <span class="st">&quot;Quick select:&quot;</span>,</a>
+<a class="sourceLine" id="cb66-20" data-line-number="20">                                                 <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;One day&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb66-21" data-line-number="21">                                                                <span class="st">&quot;One week&quot;</span> =<span class="st"> </span><span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb66-22" data-line-number="22">                                                                <span class="st">&quot;Twe weeks&quot;</span> =<span class="st"> </span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb66-23" data-line-number="23">                                                                <span class="st">&quot;One month&quot;</span> =<span class="st"> </span><span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb66-24" data-line-number="24">                                                                <span class="st">&quot;Whole period&quot;</span> =<span class="st"> </span><span class="dv">5</span>), </a>
+<a class="sourceLine" id="cb66-25" data-line-number="25">                                                 <span class="dt">selected =</span> <span class="dv">5</span>, <span class="dt">inline =</span> T),</a>
+<a class="sourceLine" id="cb66-26" data-line-number="26">                                    <span class="dt">width=</span><span class="dv">7</span>,<span class="dt">style=</span><span class="st">&quot;padding:20px;&quot;</span>),</a>
+<a class="sourceLine" id="cb66-27" data-line-number="27">                                <span class="dt">width=</span><span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb66-28" data-line-number="28">                            <span class="co"># 2 value boxes with case and death number</span></a>
+<a class="sourceLine" id="cb66-29" data-line-number="29">                            <span class="kw">uiOutput</span>(<span class="st">&quot;total_case&quot;</span>),</a>
+<a class="sourceLine" id="cb66-30" data-line-number="30">                            <span class="kw">uiOutput</span>(<span class="st">&quot;total_death&quot;</span>)</a>
+<a class="sourceLine" id="cb66-31" data-line-number="31">                        ),</a>
+<a class="sourceLine" id="cb66-32" data-line-number="32">                        <span class="co"># map</span></a>
+<a class="sourceLine" id="cb66-33" data-line-number="33">                        <span class="kw">fluidRow</span>(<span class="kw">wellPanel</span>(<span class="kw">leafletOutput</span>(<span class="st">&quot;case_map&quot;</span>)))</a>
+<a class="sourceLine" id="cb66-34" data-line-number="34">                ), <span class="co"># tabItem 1 (map) end </span></a>
+<a class="sourceLine" id="cb66-35" data-line-number="35">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_top_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>), <span class="co"># tabItem 2 (top N chart) end </span></a>
+<a class="sourceLine" id="cb66-36" data-line-number="36">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_sel_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>), <span class="co"># tabItem 3 (selected countries chart) end </span></a>
+<a class="sourceLine" id="cb66-37" data-line-number="37">                <span class="kw">tabItem</span>(<span class="st">&quot;ref_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>) <span class="co"># tabItem 4 (reference) end </span></a>
+<a class="sourceLine" id="cb66-38" data-line-number="38">            )</a>
+<a class="sourceLine" id="cb66-39" data-line-number="39">        )</a>
+<a class="sourceLine" id="cb66-40" data-line-number="40">    )</a>
+<a class="sourceLine" id="cb66-41" data-line-number="41">)</a></code></pre></div>
+<p>互動式地圖執行畫面：</p>
+<p><img src="figure/map_demo.gif" /><!-- --></p>
+</div>
+<div id="各國圖表-ui" class="section level2">
+<h2><span class="header-section-number">10.3</span> 各國圖表 UI</h2>
+<p>因各國圖表的介面設計差不多，以下以<strong>自選國家圖表</strong>頁面<code>chart_sel_tab</code>為例，說明UI安排方式，其它部分程式碼則簡化以方便說明。</p>
+<p>自選國家圖表：</p>
+<p><img src="figure/covid19select.png" width="786" /></p>
+<p>由上圖可知，本頁面由上方國家複選框<code>selectizeInput</code>、調整是否將數字做指數轉換的單選選單<code>radioButtons</code>以及下方共四個折線圖組成。</p>
+<p>以下方簡化過的程式碼做說明，首先用三個<code>fluidRow</code>將上方選單曲塊與下方折線圖(兩兩一組)區塊分開，<strong>上方區塊</strong>先使用兩個<code>box</code>排版，<code>box</code>的寬度均為4，相加起來並非12，剩下的區塊(6)留著未來擴充用。第一個<code>box</code>中放入國家多選的輸入框<code>selectizeInput</code>，第二個<code>box</code>放入調整指數轉換的單選選單<code>radioButtons</code>。<strong>下方兩個區塊</strong>則分別用兩個<code>column</code>排版，每個<code>column</code>放入一個標題<code>htmlOutput</code>以及一個圖<code>plotlyOutput</code>。</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">    <span class="kw">dashboardBody</span>(</a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb67-4" data-line-number="4">            <span class="kw">tabItems</span>(</a>
+<a class="sourceLine" id="cb67-5" data-line-number="5">                <span class="kw">tabItem</span>(<span class="st">&quot;map_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>), <span class="co"># tabItem 1 (map)  </span></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_top_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>), <span class="co"># tabItem 2 (top N chart)  </span></a>
+<a class="sourceLine" id="cb67-7" data-line-number="7">                <span class="kw">tabItem</span>(<span class="st">&quot;chart_sel_tab&quot;</span>,</a>
+<a class="sourceLine" id="cb67-8" data-line-number="8">                        <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb67-9" data-line-number="9">                            <span class="kw">box</span>(<span class="kw">selectizeInput</span>(<span class="st">&quot;country_select&quot;</span>, <span class="st">&quot;Selected countries:&quot;</span>,</a>
+<a class="sourceLine" id="cb67-10" data-line-number="10">                                               <span class="kw">unique</span>(covid_country_long<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>), </a>
+<a class="sourceLine" id="cb67-11" data-line-number="11">                                               <span class="dt">selected =</span> <span class="kw">c</span>(<span class="st">&quot;Taiwan&quot;</span>,<span class="st">&quot;China&quot;</span>,<span class="st">&quot;Iran&quot;</span>,<span class="st">&quot;Italy&quot;</span>,</a>
+<a class="sourceLine" id="cb67-12" data-line-number="12">                                                            <span class="st">&quot;United States of America&quot;</span>), </a>
+<a class="sourceLine" id="cb67-13" data-line-number="13">                                               <span class="dt">multiple =</span> T,</a>
+<a class="sourceLine" id="cb67-14" data-line-number="14">                                               <span class="dt">options =</span> <span class="ot">NULL</span>),</a>
+<a class="sourceLine" id="cb67-15" data-line-number="15">                                <span class="dt">width=</span><span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb67-16" data-line-number="16">                            <span class="kw">box</span>(<span class="kw">radioButtons</span>(<span class="st">&quot;log_sel&quot;</span>,<span class="dt">label =</span> <span class="st">&quot;Scale: &quot;</span>,</a>
+<a class="sourceLine" id="cb67-17" data-line-number="17">                                             <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Linear Scale&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb67-18" data-line-number="18">                                                            <span class="st">&quot;Logarithmic Scale&quot;</span> =<span class="st"> </span><span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb67-19" data-line-number="19">                                             <span class="dt">selected =</span> <span class="dv">1</span>, <span class="dt">inline =</span> T),</a>
+<a class="sourceLine" id="cb67-20" data-line-number="20">                                <span class="dt">width=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb67-21" data-line-number="21">                        ),</a>
+<a class="sourceLine" id="cb67-22" data-line-number="22">                        <span class="kw">fluidRow</span>(<span class="kw">column</span>(<span class="kw">htmlOutput</span>(<span class="st">&quot;country_text&quot;</span>),</a>
+<a class="sourceLine" id="cb67-23" data-line-number="23">                                        <span class="kw">plotlyOutput</span>(<span class="st">&quot;case_plot_country&quot;</span>),</a>
+<a class="sourceLine" id="cb67-24" data-line-number="24">                                        <span class="dt">width=</span><span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb67-25" data-line-number="25">                                 <span class="kw">column</span>(<span class="kw">htmlOutput</span>(<span class="st">&quot;country_new_text&quot;</span>),</a>
+<a class="sourceLine" id="cb67-26" data-line-number="26">                                        <span class="kw">plotlyOutput</span>(<span class="st">&quot;newcase_plot_country&quot;</span>),</a>
+<a class="sourceLine" id="cb67-27" data-line-number="27">                                        <span class="dt">width=</span><span class="dv">6</span>)),</a>
+<a class="sourceLine" id="cb67-28" data-line-number="28">                        <span class="kw">fluidRow</span>(<span class="kw">column</span>(<span class="kw">htmlOutput</span>(<span class="st">&quot;country_death_text&quot;</span>),</a>
+<a class="sourceLine" id="cb67-29" data-line-number="29">                                        <span class="kw">plotlyOutput</span>(<span class="st">&quot;death_plot_country&quot;</span>),</a>
+<a class="sourceLine" id="cb67-30" data-line-number="30">                                        <span class="dt">width=</span><span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb67-31" data-line-number="31">                                 <span class="kw">column</span>(<span class="kw">htmlOutput</span>(<span class="st">&quot;country_epi_text&quot;</span>),</a>
+<a class="sourceLine" id="cb67-32" data-line-number="32">                                        <span class="kw">plotlyOutput</span>(<span class="st">&quot;epi_plot_country&quot;</span>),</a>
+<a class="sourceLine" id="cb67-33" data-line-number="33">                                        <span class="dt">width=</span><span class="dv">6</span>)),</a>
+<a class="sourceLine" id="cb67-34" data-line-number="34">                        <span class="co"># info tables</span></a>
+<a class="sourceLine" id="cb67-35" data-line-number="35">                        <span class="kw">htmlOutput</span>(<span class="st">&quot;country_table_text&quot;</span>),</a>
+<a class="sourceLine" id="cb67-36" data-line-number="36">                        <span class="kw">fluidRow</span>(<span class="kw">wellPanel</span>(<span class="kw">DTOutput</span>(<span class="st">&quot;table_country&quot;</span>)))</a>
+<a class="sourceLine" id="cb67-37" data-line-number="37">                ), <span class="co"># tabItem 3 (selected countries chart) end </span></a>
+<a class="sourceLine" id="cb67-38" data-line-number="38">                <span class="kw">tabItem</span>(<span class="st">&quot;ref_tab&quot;</span>,<span class="op">~</span>code code code<span class="op">~</span>) <span class="co"># tabItem 4 (reference) end </span></a>
+<a class="sourceLine" id="cb67-39" data-line-number="39">            )</a>
+<a class="sourceLine" id="cb67-40" data-line-number="40">        )</a>
+<a class="sourceLine" id="cb67-41" data-line-number="41">    )</a>
+<a class="sourceLine" id="cb67-42" data-line-number="42">)</a></code></pre></div>
+<p>互動式圖表執行畫面：</p>
+<p><img src="figure/curve_demo.gif" /><!-- --></p>
+</div>
+<div id="伺服器端程式" class="section level2">
+<h2><span class="header-section-number">10.4</span> 伺服器端程式</h2>
+<p>本儀表板伺服器端程式共可分四個部分，分別是<strong>UI文字設定</strong>、<strong>UI圖表設定</strong>、<strong>更新圖表的反應函數</strong>以及<strong>偵測輸入元件改變以更新資料的反應函數</strong>，此部分程式碼均須放在<code>server function</code>內，為解說方便，省略<code>server&lt;-function(input,output, session){ }</code></p>
+<div id="ui文字設定" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> UI文字設定</h3>
+<p>在<strong>UI文字設定</strong>中，將程式碼粗略分成:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Footer註腳</strong>中的最新更新日期設定</li>
+<li><strong>圖表標題</strong>隨使用者操作動態更新</li>
+<li><strong>個案數與死亡人數</strong>隨使用者選擇區間動態計算更新</li>
+</ol>
+<p>若儀表板文字不會隨著使用者操作而變動，通常會在UI前端程式就設定好文字內容，如此範例儀表板的Reference參考資料部分，但若想要讓文字可隨著使用者操作或是資料自動更新，就須在伺服器端程式設定。</p>
+<p>首先在<strong>Footer註腳</strong>部分，因更新日期要隨著資料更新而改變文字，意即使用資料的最新（最大）日期，因此在伺服器端設定，此處使用彈性較大的<code>renderUI()</code>搭配可使用HTML標籤的<code>tagList()</code>做設計與排版。</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co">### Footer</span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">output<span class="op">$</span>update&lt;-<span class="kw">renderUI</span>(<span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">  <span class="kw">paste0</span>(<span class="st">&quot;Update: &quot;</span>,<span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)),</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4">  <span class="kw">br</span>(),</a>
+<a class="sourceLine" id="cb68-5" data-line-number="5">  <span class="st">&quot;Data source:&quot;</span>,</a>
+<a class="sourceLine" id="cb68-6" data-line-number="6">  <span class="kw">a</span>(<span class="dt">href=</span><span class="st">&quot;https://github.com/CSSEGISandData/COVID-19&quot;</span>,<span class="st">&quot;JHU CSSE&quot;</span>,<span class="dt">target=</span><span class="st">&quot;_blank&quot;</span>),</a>
+<a class="sourceLine" id="cb68-7" data-line-number="7">  <span class="kw">br</span>(),</a>
+<a class="sourceLine" id="cb68-8" data-line-number="8">  <span class="st">&quot;Made by:&quot;</span>,</a>
+<a class="sourceLine" id="cb68-9" data-line-number="9">  <span class="kw">a</span>(<span class="dt">href=</span><span class="st">&quot;https://yjtseng.info&quot;</span>,<span class="st">&quot;Yi-Ju Tseng&quot;</span>,<span class="dt">target=</span><span class="st">&quot;_blank&quot;</span>),</a>
+<a class="sourceLine" id="cb68-10" data-line-number="10">)</a>
+<a class="sourceLine" id="cb68-11" data-line-number="11">)</a></code></pre></div>
+<p><strong>圖表的標題</strong>也希望可隨著使用者選擇國家數量做變動，如果選案例數前5名的國家，或是自選了6個國家等，都會直接在標題更新，此處一樣使用<code>renderUI()</code>作標題文字設定。</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="co">### Plot Title</span></a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">output<span class="op">$</span>topN_text&lt;-</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Total cases, top&quot;</span>,input<span class="op">$</span>topN,<span class="st">&quot;countries&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-4" data-line-number="4">output<span class="op">$</span>topN_new_text&lt;-</a>
+<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Daily new cases, top&quot;</span>,input<span class="op">$</span>topN,<span class="st">&quot;countries&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-6" data-line-number="6">output<span class="op">$</span>country_text&lt;-</a>
+<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Total cases in selected &quot;</span>,<span class="kw">length</span>(input<span class="op">$</span>country_select)),<span class="st">&quot; countries&quot;</span>))</a>
+<a class="sourceLine" id="cb69-8" data-line-number="8">output<span class="op">$</span>country_new_text&lt;-</a>
+<a class="sourceLine" id="cb69-9" data-line-number="9"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Daily new cases in selected &quot;</span>,<span class="kw">length</span>(input<span class="op">$</span>country_select)),<span class="st">&quot; countries&quot;</span>))</a>
+<a class="sourceLine" id="cb69-10" data-line-number="10">output<span class="op">$</span>country_text_t&lt;-</a>
+<a class="sourceLine" id="cb69-11" data-line-number="11"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Total cases in&quot;</span>,input<span class="op">$</span>country,<span class="st">&quot;, table&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-12" data-line-number="12">output<span class="op">$</span>topN_death_text&lt;-</a>
+<a class="sourceLine" id="cb69-13" data-line-number="13"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Total death, top&quot;</span>,input<span class="op">$</span>topN,<span class="st">&quot;countries&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-14" data-line-number="14">output<span class="op">$</span>country_death_text&lt;-</a>
+<a class="sourceLine" id="cb69-15" data-line-number="15"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Total death in selected &quot;</span>,<span class="kw">length</span>(input<span class="op">$</span>country_select)),<span class="st">&quot; countries&quot;</span>))</a>
+<a class="sourceLine" id="cb69-16" data-line-number="16">output<span class="op">$</span>country_death_text_t&lt;-</a>
+<a class="sourceLine" id="cb69-17" data-line-number="17"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Total death in&quot;</span>,input<span class="op">$</span>country,<span class="st">&quot;, table&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-18" data-line-number="18">output<span class="op">$</span>topN_epi_text&lt;-</a>
+<a class="sourceLine" id="cb69-19" data-line-number="19"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Number of death since 10th death&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-20" data-line-number="20">output<span class="op">$</span>country_epi_text&lt;-</a>
+<a class="sourceLine" id="cb69-21" data-line-number="21"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Number of death since 10th death&quot;</span>)))</a>
+<a class="sourceLine" id="cb69-22" data-line-number="22">output<span class="op">$</span>country_epi_text_t&lt;-</a>
+<a class="sourceLine" id="cb69-23" data-line-number="23"><span class="st">  </span><span class="kw">renderUI</span>(<span class="kw">h3</span>(<span class="kw">paste</span>(<span class="st">&quot;Number of death since 10th death&quot;</span>)))</a></code></pre></div>
+<p>最後則是地圖上<strong>個案數與死亡人數</strong>的數值文字，希望隨著使用者所選區間更新，使用<code>renderUI()</code>加上<code>valueBox()</code>設定，未使用<code>renderValueBox()</code>是因為<code>renderValueBox()</code>沒有設定寬度的功能，均使用預設寬度4，這個功能開發者可能未來會修正，因此使用較麻煩的<code>renderUI()</code>加上<code>valueBox()</code>方式，將寬度設為2。</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co">### valueBox</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">output<span class="op">$</span>total_case &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</a>
+<a class="sourceLine" id="cb70-3" data-line-number="3">  <span class="kw">valueBox</span>(</a>
+<a class="sourceLine" id="cb70-4" data-line-number="4">    <span class="dt">value=</span><span class="kw">format</span>(<span class="kw">sum</span>(<span class="kw">world_case_dym</span>()<span class="op">@</span>data<span class="op">$</span>NewCaseTotal,<span class="dt">na.rm=</span>T), <span class="dt">big.mark=</span><span class="st">&quot;,&quot;</span>), </a>
+<a class="sourceLine" id="cb70-5" data-line-number="5">    <span class="dt">subtitle=</span><span class="kw">paste0</span>(<span class="st">&quot;Cases, &quot;</span>,input<span class="op">$</span>period[<span class="dv">1</span>],<span class="st">&quot; to &quot;</span>,input<span class="op">$</span>period[<span class="dv">2</span>]), </a>
+<a class="sourceLine" id="cb70-6" data-line-number="6">    <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;diagnoses&quot;</span>, <span class="dt">lib =</span> <span class="st">&quot;font-awesome&quot;</span>),</a>
+<a class="sourceLine" id="cb70-7" data-line-number="7">    <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>,<span class="dt">width=</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb70-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb70-9" data-line-number="9">})</a>
+<a class="sourceLine" id="cb70-10" data-line-number="10">output<span class="op">$</span>total_death &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</a>
+<a class="sourceLine" id="cb70-11" data-line-number="11">  <span class="kw">valueBox</span>(</a>
+<a class="sourceLine" id="cb70-12" data-line-number="12">    <span class="dt">value=</span><span class="kw">format</span>(<span class="kw">sum</span>(<span class="kw">world_case_dym</span>()<span class="op">@</span>data<span class="op">$</span>NewDeathTotal,<span class="dt">na.rm=</span>T), <span class="dt">big.mark=</span><span class="st">&quot;,&quot;</span>), </a>
+<a class="sourceLine" id="cb70-13" data-line-number="13">    <span class="dt">subtitle=</span><span class="kw">paste0</span>(<span class="st">&quot;Death, &quot;</span>,input<span class="op">$</span>period[<span class="dv">1</span>],<span class="st">&quot; to &quot;</span>,input<span class="op">$</span>period[<span class="dv">2</span>]), </a>
+<a class="sourceLine" id="cb70-14" data-line-number="14">    <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;skull&quot;</span>, <span class="dt">lib =</span> <span class="st">&quot;font-awesome&quot;</span>),</a>
+<a class="sourceLine" id="cb70-15" data-line-number="15">    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,<span class="dt">width=</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb70-16" data-line-number="16">  )</a>
+<a class="sourceLine" id="cb70-17" data-line-number="17">})</a></code></pre></div>
+</div>
+<div id="ui圖表設定" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> UI圖表設定</h3>
+<p>在<strong>UI圖表設定</strong>中，將程式碼粗略分成:</p>
+<ol style="list-style-type: decimal">
+<li><strong>日期選擇的slider</strong>與日期區間快速選單連動</li>
+<li><strong>地圖</strong>設定更新</li>
+<li><strong>圖片</strong>更新</li>
+<li><strong>表格</strong>更新</li>
+</ol>
+<p>為了分析疫情方便，儀表板中使用RadioButton設計了<strong>日期區間快速選單</strong>，讓想看單月或是單週狀況的使用者可以不用慢慢拉日期slider，此步驟可以用RadioButton連動地圖，或是RadioButton連動日期Slider，再由日期Slider連動地圖更新，為了使畫面資訊統一，避免日期快速選單資訊與日期選擇slider資訊不一致 (例如slider是全時，但快速選單是一週)，本儀表板選擇使用RadioButton連動日期Slider，再由日期Slider連動地圖更新。此處更新slider使用<code>observeEvent()</code>追蹤RadioButton日期區間快速選單的變化，若偵測到改變，則執行一連串的<code>ifelse</code>，並使用內建的<code>updateSliderInput()</code>更新日期Slider。</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co">## slider auto update</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="kw">observeEvent</span>(input<span class="op">$</span>period_quick, {</a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">  <span class="cf">if</span>(input<span class="op">$</span>period_quick<span class="op">==</span><span class="st">&quot;1&quot;</span>){</a>
+<a class="sourceLine" id="cb71-4" data-line-number="4">    <span class="kw">updateSliderInput</span>(session, <span class="st">&quot;period&quot;</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="kw">max</span>(covid_country_long<span class="op">$</span>Date),</a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">                                                   <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)))</a>
+<a class="sourceLine" id="cb71-6" data-line-number="6">  }<span class="cf">else</span> <span class="cf">if</span>(input<span class="op">$</span>period_quick<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb71-7" data-line-number="7">    <span class="kw">updateSliderInput</span>(session, <span class="st">&quot;period&quot;</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)<span class="op">-</span><span class="dv">7</span>,</a>
+<a class="sourceLine" id="cb71-8" data-line-number="8">                                                   <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)))</a>
+<a class="sourceLine" id="cb71-9" data-line-number="9">  }<span class="cf">else</span> <span class="cf">if</span>(input<span class="op">$</span>period_quick<span class="op">==</span><span class="st">&quot;3&quot;</span>){</a>
+<a class="sourceLine" id="cb71-10" data-line-number="10">    <span class="kw">updateSliderInput</span>(session, <span class="st">&quot;period&quot;</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)<span class="op">-</span><span class="dv">14</span>,</a>
+<a class="sourceLine" id="cb71-11" data-line-number="11">                                                   <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)))</a>
+<a class="sourceLine" id="cb71-12" data-line-number="12">  }<span class="cf">else</span> <span class="cf">if</span>(input<span class="op">$</span>period_quick<span class="op">==</span><span class="st">&quot;4&quot;</span>){</a>
+<a class="sourceLine" id="cb71-13" data-line-number="13">    <span class="kw">updateSliderInput</span>(session, <span class="st">&quot;period&quot;</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)<span class="op">-</span><span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb71-14" data-line-number="14">                                                   <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)))</a>
+<a class="sourceLine" id="cb71-15" data-line-number="15">  }<span class="cf">else</span> <span class="cf">if</span>(input<span class="op">$</span>period_quick<span class="op">==</span><span class="st">&quot;5&quot;</span>){</a>
+<a class="sourceLine" id="cb71-16" data-line-number="16">    <span class="kw">updateSliderInput</span>(session, <span class="st">&quot;period&quot;</span>, <span class="dt">value =</span> <span class="kw">c</span>(<span class="kw">min</span>(covid_country_long<span class="op">$</span>Date),</a>
+<a class="sourceLine" id="cb71-17" data-line-number="17">                                                   <span class="kw">max</span>(covid_country_long<span class="op">$</span>Date)))</a>
+<a class="sourceLine" id="cb71-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb71-19" data-line-number="19">})</a></code></pre></div>
+<p><strong>疫情地圖</strong>套用開源的Leaflet地圖，更新與設計直接使用<code>renderLeaflet()</code>功能，使用<code>addPolygons()</code>將地圖的國家邊界畫出來，並設定使用案例數著色<code>fillColor = ~pal(NewCaseTotal)</code>，當滑鼠游標滑過時，使用<code>highlight = highlightOptions()</code>將該國邊界顏色改變，以凸顯游標所在國家，同時使用<code>label = ~lab</code>設定彈出資訊視窗的內容，<code>~lab</code>內容的設計在資料產出時即完成，會在後面章節介紹。最後使用<code>addLegend()</code>加上圖標，讓使用者判斷每個顏色對應的案例數，以及用<code>setView</code>設定地圖載入時的預設中心位置和地圖大小。</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co">## map output components setting</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2">output<span class="op">$</span>case_map&lt;-<span class="kw">renderLeaflet</span>({</a>
+<a class="sourceLine" id="cb72-3" data-line-number="3">  <span class="co">#world_case period.....</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4">  <span class="kw">leaflet</span>(<span class="kw">world_case_dym</span>())  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="st">    </span><span class="kw">addProviderTiles</span>(<span class="st">&quot;MapBox&quot;</span>, </a>
+<a class="sourceLine" id="cb72-6" data-line-number="6">                     <span class="dt">options =</span> <span class="kw">providerTileOptions</span>(</a>
+<a class="sourceLine" id="cb72-7" data-line-number="7">                       <span class="dt">id =</span> <span class="st">&quot;mapbox.light&quot;</span>,</a>
+<a class="sourceLine" id="cb72-8" data-line-number="8">                       <span class="dt">accessToken =</span> <span class="kw">Sys.getenv</span>(<span class="st">&#39;MAPBOX_ACCESS_TOKEN&#39;</span>)))<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb72-9" data-line-number="9"><span class="st">    </span><span class="kw">addPolygons</span>(</a>
+<a class="sourceLine" id="cb72-10" data-line-number="10">      <span class="dt">fillColor =</span> <span class="op">~</span><span class="kw">pal</span>(NewCaseTotal),</a>
+<a class="sourceLine" id="cb72-11" data-line-number="11">      <span class="dt">weight =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb72-12" data-line-number="12">      <span class="dt">opacity =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb72-13" data-line-number="13">      <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb72-14" data-line-number="14">      <span class="dt">dashArray =</span> <span class="st">&quot;1&quot;</span>,</a>
+<a class="sourceLine" id="cb72-15" data-line-number="15">      <span class="dt">fillOpacity =</span> <span class="fl">0.7</span>,</a>
+<a class="sourceLine" id="cb72-16" data-line-number="16">      <span class="dt">highlight =</span> <span class="kw">highlightOptions</span>(</a>
+<a class="sourceLine" id="cb72-17" data-line-number="17">        <span class="dt">weight =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb72-18" data-line-number="18">        <span class="dt">color =</span> <span class="st">&quot;#666&quot;</span>,</a>
+<a class="sourceLine" id="cb72-19" data-line-number="19">        <span class="dt">dashArray =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb72-20" data-line-number="20">        <span class="dt">fillOpacity =</span> <span class="fl">0.7</span>,</a>
+<a class="sourceLine" id="cb72-21" data-line-number="21">        <span class="dt">bringToFront =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb72-22" data-line-number="22">      <span class="dt">label =</span> <span class="op">~</span>lab,</a>
+<a class="sourceLine" id="cb72-23" data-line-number="23">      <span class="dt">labelOptions =</span> <span class="kw">labelOptions</span>(</a>
+<a class="sourceLine" id="cb72-24" data-line-number="24">        <span class="dt">style =</span> <span class="kw">list</span>(<span class="st">&quot;font-weight&quot;</span> =<span class="st"> &quot;normal&quot;</span>, <span class="dt">padding =</span> <span class="st">&quot;3px 8px&quot;</span>),</a>
+<a class="sourceLine" id="cb72-25" data-line-number="25">        <span class="dt">textsize =</span> <span class="st">&quot;15px&quot;</span>,</a>
+<a class="sourceLine" id="cb72-26" data-line-number="26">        <span class="dt">direction =</span> <span class="st">&quot;auto&quot;</span>)</a>
+<a class="sourceLine" id="cb72-27" data-line-number="27">    ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb72-28" data-line-number="28"><span class="st">    </span><span class="kw">addLegend</span>(<span class="dt">pal =</span> pal, <span class="dt">values =</span> <span class="op">~</span>NewCaseTotal, <span class="dt">opacity =</span> <span class="fl">0.7</span>, <span class="dt">title =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb72-29" data-line-number="29">              <span class="dt">position =</span> <span class="st">&quot;bottomright&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb72-30" data-line-number="30"><span class="st">    </span><span class="kw">setView</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dt">zoom=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb72-31" data-line-number="31">  </a>
+<a class="sourceLine" id="cb72-32" data-line-number="32">})</a></code></pre></div>
+<p><strong>案例圖</strong>部分使用Plotly函式庫提供的互動式圖形功能，分為排名前幾名的圖表以及自選國家圖表，各四個圖形。設定直接使用<code>renderPlotly()</code>功能搭配<code>ggplotly()</code>將ggplot圖表帶入，ggplot圖表部分在後端使用反應函數生成，提高程式碼易讀性。</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co">## plot output components setting</span></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2">output<span class="op">$</span>case_plot_top10&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3">  <span class="kw">ggplotly</span>(<span class="kw">plot_topN_data</span>())</a>
+<a class="sourceLine" id="cb73-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb73-5" data-line-number="5">output<span class="op">$</span>newcase_plot_top10&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6">  <span class="kw">ggplotly</span>(<span class="kw">plot_topN_new_data</span>())</a>
+<a class="sourceLine" id="cb73-7" data-line-number="7">)</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8">output<span class="op">$</span>death_plot_top10&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">  <span class="kw">ggplotly</span>(<span class="kw">plot_topN_death_data</span>())</a>
+<a class="sourceLine" id="cb73-10" data-line-number="10">)</a>
+<a class="sourceLine" id="cb73-11" data-line-number="11">output<span class="op">$</span>epi_plot_top10&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-12" data-line-number="12">  <span class="kw">ggplotly</span>(<span class="kw">plot_topN_epi_data</span>())</a>
+<a class="sourceLine" id="cb73-13" data-line-number="13">)</a>
+<a class="sourceLine" id="cb73-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb73-15" data-line-number="15">output<span class="op">$</span>case_plot_country&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-16" data-line-number="16">  <span class="kw">ggplotly</span>(<span class="kw">plot_country_case_data</span>()) </a>
+<a class="sourceLine" id="cb73-17" data-line-number="17">) </a>
+<a class="sourceLine" id="cb73-18" data-line-number="18">output<span class="op">$</span>newcase_plot_country&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-19" data-line-number="19">  <span class="kw">ggplotly</span>(<span class="kw">plot_country_newcase_data</span>()) </a>
+<a class="sourceLine" id="cb73-20" data-line-number="20">)</a>
+<a class="sourceLine" id="cb73-21" data-line-number="21">output<span class="op">$</span>death_plot_country&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-22" data-line-number="22">  <span class="kw">ggplotly</span>(<span class="kw">plot_country_death_data</span>()) </a>
+<a class="sourceLine" id="cb73-23" data-line-number="23">)</a>
+<a class="sourceLine" id="cb73-24" data-line-number="24">output<span class="op">$</span>epi_plot_country&lt;-<span class="st"> </span><span class="kw">renderPlotly</span>(</a>
+<a class="sourceLine" id="cb73-25" data-line-number="25">  <span class="kw">ggplotly</span>(<span class="kw">plot_country_epi_data</span>()) </a>
+<a class="sourceLine" id="cb73-26" data-line-number="26">)</a></code></pre></div>
+<p><strong>案例數表格</strong>部分使用<code>DT</code>函式庫實現動態排序與搜尋功能，直接使用<code>renderDT()</code>功能將表格輸入即可。表格整理相關dplyr函數可參考<a href="https://yijutseng.github.io/DataScienceRBook/eda.html#dplyr" target="_blank">dplyr教學</a>。</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co">## table output components setting</span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">output<span class="op">$</span>table_country&lt;-<span class="kw">renderDT</span>(</a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">  covid_country <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>input<span class="op">$</span>country_select) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="st">    </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,date,Total_case_num,New_case_num,</a>
+<a class="sourceLine" id="cb74-6" data-line-number="6">           Total_death_num,New_death_num) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-7" data-line-number="7"><span class="st">    </span><span class="kw">rename</span>(<span class="dt">Date=</span>date,<span class="st">`</span><span class="dt">Total case number</span><span class="st">`</span>=Total_case_num,</a>
+<a class="sourceLine" id="cb74-8" data-line-number="8">           <span class="st">`</span><span class="dt">New case number</span><span class="st">`</span>=New_case_num,</a>
+<a class="sourceLine" id="cb74-9" data-line-number="9">           <span class="st">`</span><span class="dt">Total death number</span><span class="st">`</span>=Total_death_num,</a>
+<a class="sourceLine" id="cb74-10" data-line-number="10">           <span class="st">`</span><span class="dt">New death number</span><span class="st">`</span>=New_death_num),</a>
+<a class="sourceLine" id="cb74-11" data-line-number="11">  <span class="dt">filter =</span> <span class="st">&#39;top&#39;</span>, <span class="dt">server =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb74-12" data-line-number="12">  <span class="dt">options =</span> <span class="kw">list</span>(<span class="dt">pageLength =</span> <span class="dv">10</span>, </a>
+<a class="sourceLine" id="cb74-13" data-line-number="13">                 <span class="dt">autoWidth =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb74-14" data-line-number="14">                 <span class="dt">searching =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb74-15" data-line-number="15">  <span class="dt">rownames=</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb74-16" data-line-number="16">)</a></code></pre></div>
+</div>
+<div id="更新圖片的反應函數" class="section level3">
+<h3><span class="header-section-number">10.4.3</span> 更新圖片的反應函數</h3>
+<p><strong>更新圖片的反應函數</strong>共有八個，設計大同小異，使用<code>reactive()</code>函數追蹤是否要將數值取log的輸入元件變化，並使用ggplot製作折線圖，ggplot的使用可參考<a href="https://yijutseng.github.io/DataScienceRBook/vis.html#ggplot2%E7%B0%A1%E4%BB%8B" target="_blank">ggplot教學</a>。若值取log的輸入元件有改變，則重新作圖，並依照使用者的選擇決定是否要加上ggplot內建製作log圖表<code>scale_y_log10()</code>功能。</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="co">## reactive plot</span></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">plot_topN_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">topN_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-5" data-line-number="5"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb75-7" data-line-number="7">  <span class="cf">if</span>(input<span class="op">$</span>log_top<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-8" data-line-number="8">    p<span class="op">+</span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total cases (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-9" data-line-number="9"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-10" data-line-number="10">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-11" data-line-number="11">    p<span class="op">+</span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total cases&quot;</span>)</a>
+<a class="sourceLine" id="cb75-12" data-line-number="12">  }</a>
+<a class="sourceLine" id="cb75-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb75-14" data-line-number="14">} )</a>
+<a class="sourceLine" id="cb75-15" data-line-number="15">plot_topN_new_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-16" data-line-number="16">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">topN_new_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-17" data-line-number="17"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-18" data-line-number="18"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-19" data-line-number="19">  <span class="cf">if</span>(input<span class="op">$</span>log_top<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-20" data-line-number="20">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-21" data-line-number="21"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Daily new cases (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-22" data-line-number="22"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-23" data-line-number="23">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-24" data-line-number="24">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-25" data-line-number="25"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Daily new cases&quot;</span>)</a>
+<a class="sourceLine" id="cb75-26" data-line-number="26">  }</a>
+<a class="sourceLine" id="cb75-27" data-line-number="27">  </a>
+<a class="sourceLine" id="cb75-28" data-line-number="28">} )</a>
+<a class="sourceLine" id="cb75-29" data-line-number="29">plot_topN_death_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-30" data-line-number="30">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">topN_death_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-31" data-line-number="31"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-32" data-line-number="32"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-33" data-line-number="33">  <span class="cf">if</span>(input<span class="op">$</span>log_top<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-34" data-line-number="34">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-35" data-line-number="35"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Daily new cases (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-36" data-line-number="36"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-37" data-line-number="37">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-38" data-line-number="38">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-39" data-line-number="39"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Daily new cases&quot;</span>)</a>
+<a class="sourceLine" id="cb75-40" data-line-number="40">  }</a>
+<a class="sourceLine" id="cb75-41" data-line-number="41">  </a>
+<a class="sourceLine" id="cb75-42" data-line-number="42">} )</a>
+<a class="sourceLine" id="cb75-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb75-44" data-line-number="44">plot_topN_epi_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-45" data-line-number="45">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">topN_epi_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-46" data-line-number="46"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>nDays,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-47" data-line-number="47"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-48" data-line-number="48">  <span class="cf">if</span>(input<span class="op">$</span>log_top<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-49" data-line-number="49">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-50" data-line-number="50"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Number of days since 10th death&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total number of death (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-51" data-line-number="51"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-52" data-line-number="52">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-53" data-line-number="53">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-54" data-line-number="54"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Number of days since 10th death&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total number of death&quot;</span>)</a>
+<a class="sourceLine" id="cb75-55" data-line-number="55">  }</a>
+<a class="sourceLine" id="cb75-56" data-line-number="56">  </a>
+<a class="sourceLine" id="cb75-57" data-line-number="57">} )</a>
+<a class="sourceLine" id="cb75-58" data-line-number="58"></a>
+<a class="sourceLine" id="cb75-59" data-line-number="59"></a>
+<a class="sourceLine" id="cb75-60" data-line-number="60">plot_country_case_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-61" data-line-number="61">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">country_case_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-62" data-line-number="62"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-63" data-line-number="63"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-64" data-line-number="64">  <span class="cf">if</span>(input<span class="op">$</span>log_sel<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-65" data-line-number="65">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-66" data-line-number="66"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total cases (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-67" data-line-number="67"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-68" data-line-number="68">    <span class="co">#breaks = trans_breaks(&quot;log10&quot;, function(x) 10^x),</span></a>
+<a class="sourceLine" id="cb75-69" data-line-number="69">    <span class="co">#labels = trans_format(&quot;log10&quot;, math_format(10^.x))</span></a>
+<a class="sourceLine" id="cb75-70" data-line-number="70">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-71" data-line-number="71">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-72" data-line-number="72"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total cases&quot;</span>)</a>
+<a class="sourceLine" id="cb75-73" data-line-number="73">  }</a>
+<a class="sourceLine" id="cb75-74" data-line-number="74">  </a>
+<a class="sourceLine" id="cb75-75" data-line-number="75">} )</a>
+<a class="sourceLine" id="cb75-76" data-line-number="76">plot_country_newcase_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-77" data-line-number="77">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">country_newcase_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-78" data-line-number="78"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-79" data-line-number="79"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-80" data-line-number="80">  <span class="cf">if</span>(input<span class="op">$</span>log_sel<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-81" data-line-number="81">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-82" data-line-number="82"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Daily new cases (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-83" data-line-number="83"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-84" data-line-number="84">    <span class="co">#breaks = trans_breaks(&quot;log10&quot;, function(x) 10^x),</span></a>
+<a class="sourceLine" id="cb75-85" data-line-number="85">    <span class="co">#labels = trans_format(&quot;log10&quot;, math_format(10^.x))</span></a>
+<a class="sourceLine" id="cb75-86" data-line-number="86">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-87" data-line-number="87">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-88" data-line-number="88"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Daily new cases&quot;</span>)</a>
+<a class="sourceLine" id="cb75-89" data-line-number="89">  }</a>
+<a class="sourceLine" id="cb75-90" data-line-number="90">  </a>
+<a class="sourceLine" id="cb75-91" data-line-number="91">} )</a>
+<a class="sourceLine" id="cb75-92" data-line-number="92">plot_country_death_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-93" data-line-number="93">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">country_epi_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-94" data-line-number="94"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-95" data-line-number="95"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-96" data-line-number="96">  <span class="cf">if</span>(input<span class="op">$</span>log_sel<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-97" data-line-number="97">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-98" data-line-number="98"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total number of death (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-99" data-line-number="99"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-100" data-line-number="100">    <span class="co">#breaks = trans_breaks(&quot;log10&quot;, function(x) 10^x),</span></a>
+<a class="sourceLine" id="cb75-101" data-line-number="101">    <span class="co">#labels = trans_format(&quot;log10&quot;, math_format(10^.x))</span></a>
+<a class="sourceLine" id="cb75-102" data-line-number="102">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-103" data-line-number="103">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-104" data-line-number="104"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Date&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total number of death&quot;</span>)</a>
+<a class="sourceLine" id="cb75-105" data-line-number="105">  }</a>
+<a class="sourceLine" id="cb75-106" data-line-number="106">  </a>
+<a class="sourceLine" id="cb75-107" data-line-number="107">} )</a>
+<a class="sourceLine" id="cb75-108" data-line-number="108"></a>
+<a class="sourceLine" id="cb75-109" data-line-number="109">plot_country_epi_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb75-110" data-line-number="110">  p&lt;-<span class="kw">ggplot</span>(<span class="kw">country_death_data</span>())<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-111" data-line-number="111"><span class="st">      </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>nDays,<span class="dt">y=</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>,<span class="dt">color=</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-112" data-line-number="112"><span class="st">      </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb75-113" data-line-number="113">  <span class="cf">if</span>(input<span class="op">$</span>log_sel<span class="op">==</span><span class="st">&quot;2&quot;</span>){</a>
+<a class="sourceLine" id="cb75-114" data-line-number="114">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-115" data-line-number="115"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Number of days since 10th death&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total death (log)&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-116" data-line-number="116"><span class="st">      </span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb75-117" data-line-number="117">    <span class="co">#breaks = trans_breaks(&quot;log10&quot;, function(x) 10^x),</span></a>
+<a class="sourceLine" id="cb75-118" data-line-number="118">    <span class="co">#labels = trans_format(&quot;log10&quot;, math_format(10^.x))</span></a>
+<a class="sourceLine" id="cb75-119" data-line-number="119">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb75-120" data-line-number="120">    p<span class="op">+</span></a>
+<a class="sourceLine" id="cb75-121" data-line-number="121"><span class="st">      </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Number of days since 10th death&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Total death&quot;</span>)</a>
+<a class="sourceLine" id="cb75-122" data-line-number="122">  }</a>
+<a class="sourceLine" id="cb75-123" data-line-number="123">} )</a></code></pre></div>
+</div>
+<div id="更新資料的反應函數" class="section level3">
+<h3><span class="header-section-number">10.4.4</span> 更新資料的反應函數</h3>
+<p>此儀表板會因輸入元件改變而須重新篩選整理的資料生成程式碼都包在獨立的反應函數內，反應函數的使用可參考反應函數章節Ch. <a href="server.html#reactive">6.2</a>，<strong>圖片部分</strong>主要使用<code>dplyr</code>套件一使用者選擇的國家進行資料篩選 (使用<code>filter()</code>功能)，<code>mutate()</code>則是應用在設定圖片國家排列順序的factor生成。</p>
+<p><strong>地圖資料</strong>的部分，主要是依照使用者選擇的日期區間篩選<code>filter()</code>並更新輸入資料，將選擇區間內的新案例數使用<code>summarise()</code>加總成為區間內總案例數，最後更新地圖中滑鼠滑過該區域而跳出的資訊視窗的內容，寫入<code>lab</code>，其中使用<code>sprintf</code>以及許多HTML tags做排版，有興趣的話可以自學HTML完成。</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co">## reactive data for plot</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2">country_case_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-3" data-line-number="3">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>input<span class="op">$</span>country_select <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;Total_case_num&quot;</span>) </a>
+<a class="sourceLine" id="cb76-6" data-line-number="6">} )</a>
+<a class="sourceLine" id="cb76-7" data-line-number="7">country_newcase_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-8" data-line-number="8">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-9" data-line-number="9"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>input<span class="op">$</span>country_select <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-10" data-line-number="10"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;New_case_num&quot;</span>) </a>
+<a class="sourceLine" id="cb76-11" data-line-number="11">} )</a>
+<a class="sourceLine" id="cb76-12" data-line-number="12">country_epi_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-13" data-line-number="13">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-14" data-line-number="14"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>input<span class="op">$</span>country_select <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-15" data-line-number="15"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;Total_death_num&quot;</span>) </a>
+<a class="sourceLine" id="cb76-16" data-line-number="16">} )</a>
+<a class="sourceLine" id="cb76-17" data-line-number="17">country_death_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-18" data-line-number="18">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-19" data-line-number="19"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>input<span class="op">$</span>country_select <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-20" data-line-number="20"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;Total_death_num&quot;</span>) </a>
+<a class="sourceLine" id="cb76-21" data-line-number="21">} )</a>
+<a class="sourceLine" id="cb76-22" data-line-number="22">topN_data&lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-23" data-line-number="23">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-24" data-line-number="24"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>TopCaseCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)] <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-25" data-line-number="25"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;Total_case_num&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-26" data-line-number="26"><span class="st">    </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>=</a>
+<a class="sourceLine" id="cb76-27" data-line-number="27"><span class="st">             </span><span class="kw">factor</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,</a>
+<a class="sourceLine" id="cb76-28" data-line-number="28">                    <span class="dt">levels =</span> TopCaseCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)]))</a>
+<a class="sourceLine" id="cb76-29" data-line-number="29">} )</a>
+<a class="sourceLine" id="cb76-30" data-line-number="30">topN_new_data&lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-31" data-line-number="31">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-32" data-line-number="32"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>TopNewCaseCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)] <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-33" data-line-number="33"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;New_case_num&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-34" data-line-number="34"><span class="st">    </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>=</a>
+<a class="sourceLine" id="cb76-35" data-line-number="35"><span class="st">             </span><span class="kw">factor</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,</a>
+<a class="sourceLine" id="cb76-36" data-line-number="36">                    <span class="dt">levels =</span> TopNewCaseCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)]))</a>
+<a class="sourceLine" id="cb76-37" data-line-number="37">} )</a>
+<a class="sourceLine" id="cb76-38" data-line-number="38">topN_death_data&lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-39" data-line-number="39">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-40" data-line-number="40"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>TopDeathCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)] <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-41" data-line-number="41"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;Total_death_num&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-42" data-line-number="42"><span class="st">    </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>=</a>
+<a class="sourceLine" id="cb76-43" data-line-number="43"><span class="st">             </span><span class="kw">factor</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,</a>
+<a class="sourceLine" id="cb76-44" data-line-number="44">                    <span class="dt">levels =</span> TopDeathCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)])) </a>
+<a class="sourceLine" id="cb76-45" data-line-number="45">} )</a>
+<a class="sourceLine" id="cb76-46" data-line-number="46">topN_epi_data&lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-47" data-line-number="47">  covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-48" data-line-number="48"><span class="st">    </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span> <span class="op">%in%</span><span class="st"> </span>TopDeathCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)] <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-49" data-line-number="49"><span class="st">             </span>Type<span class="op">==</span><span class="st">&quot;Total_death_num&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-50" data-line-number="50"><span class="st">    </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>=</a>
+<a class="sourceLine" id="cb76-51" data-line-number="51"><span class="st">             </span><span class="kw">factor</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,</a>
+<a class="sourceLine" id="cb76-52" data-line-number="52">                    <span class="dt">levels =</span> TopDeathCountry[<span class="dv">1</span><span class="op">:</span><span class="kw">as.numeric</span>(input<span class="op">$</span>topN)]))</a>
+<a class="sourceLine" id="cb76-53" data-line-number="53">} )</a>
+<a class="sourceLine" id="cb76-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb76-55" data-line-number="55"></a>
+<a class="sourceLine" id="cb76-56" data-line-number="56"></a>
+<a class="sourceLine" id="cb76-57" data-line-number="57"><span class="co">## reactive data for map</span></a>
+<a class="sourceLine" id="cb76-58" data-line-number="58">world_case_dym&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb76-59" data-line-number="59">  period_data&lt;-covid_country <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-60" data-line-number="60"><span class="st">    </span><span class="kw">filter</span>(date<span class="op">&lt;=</span><span class="st"> </span>lubridate<span class="op">::</span><span class="kw">ymd</span>(input<span class="op">$</span>period[<span class="dv">2</span>]) <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-61" data-line-number="61"><span class="st">             </span>date<span class="op">&gt;=</span><span class="st"> </span>lubridate<span class="op">::</span><span class="kw">ymd</span>(input<span class="op">$</span>period[<span class="dv">1</span>]))<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-62" data-line-number="62"><span class="st">    </span><span class="kw">group_by</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-63" data-line-number="63"><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">NewCaseTotal=</span><span class="kw">sum</span>(New_case_num),</a>
+<a class="sourceLine" id="cb76-64" data-line-number="64">              <span class="dt">NewDeathTotal=</span><span class="kw">sum</span>(New_death_num)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-65" data-line-number="65"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">CFR=</span>NewDeathTotal<span class="op">/</span>NewCaseTotal)</a>
+<a class="sourceLine" id="cb76-66" data-line-number="66">  </a>
+<a class="sourceLine" id="cb76-67" data-line-number="67">  world_case<span class="op">@</span>data &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb76-68" data-line-number="68"><span class="st">    </span><span class="kw">left_join</span>(world_case<span class="op">@</span>data, </a>
+<a class="sourceLine" id="cb76-69" data-line-number="69">              period_data, </a>
+<a class="sourceLine" id="cb76-70" data-line-number="70">              <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;name&quot;</span> =<span class="st"> &quot;Country/Region&quot;</span>))</a>
+<a class="sourceLine" id="cb76-71" data-line-number="71">  world_case<span class="op">@</span>data<span class="op">$</span>lab &lt;-<span class="st"> </span><span class="kw">sprintf</span>(</a>
+<a class="sourceLine" id="cb76-72" data-line-number="72">    <span class="st">&quot;&lt;i&gt;%s - %s&lt;/i&gt;&lt;br/&gt;&lt;strong&gt;%s&lt;/strong&gt;&lt;br/&gt;&lt;strong&gt;Total cases:&lt;/strong&gt; %g&lt;br/&gt;&lt;strong&gt;Total death:&lt;/strong&gt; %g&lt;br/&gt;&lt;strong&gt;CFR:&lt;/strong&gt; %g&quot;</span>,</a>
+<a class="sourceLine" id="cb76-73" data-line-number="73">    input<span class="op">$</span>period[<span class="dv">1</span>],input<span class="op">$</span>period[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb76-74" data-line-number="74">    world_case<span class="op">@</span>data<span class="op">$</span>name, world_case<span class="op">@</span>data<span class="op">$</span>NewCaseTotal, </a>
+<a class="sourceLine" id="cb76-75" data-line-number="75">    world_case<span class="op">@</span>data<span class="op">$</span>NewDeathTotal, <span class="kw">round</span>(world_case<span class="op">@</span>data<span class="op">$</span>CFR<span class="op">*</span><span class="dv">100</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb76-76" data-line-number="76">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">lapply</span>(htmltools<span class="op">::</span>HTML)</a>
+<a class="sourceLine" id="cb76-77" data-line-number="77">  world_case</a>
+<a class="sourceLine" id="cb76-78" data-line-number="78">})</a></code></pre></div>
+</div>
+</div>
+<div id="資料整理獨立程式碼" class="section level2">
+<h2><span class="header-section-number">10.5</span> 資料整理獨立程式碼</h2>
+<p>因提昇程式碼的易讀性 (不想讓單檔太長)以及方便未來維護，將疫情資料與地圖資料的處理獨立的R程式碼檔案<code>dataLoad.R</code>，若想在執行shiny APP前載入獨立的R程式碼檔案，可在<code>app.R</code>中使用<code>soruce()</code>載入。</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">source</span>(<span class="st">&quot;dataLoad.R&quot;</span>)</a></code></pre></div>
+<p>以下是獨立R程式碼檔案<code>dataLoad.R</code>的內容，包括將<a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">COVID-19 Data Repository by Johns Hopkins CSSE</a>的案例數和死亡數資料匯入，原設計為寬表，轉換成長表方便後續分析，並計算每日新案例數與新死亡數，以及將案例數與死亡數合併成一張表格等，主要使用dplyr套件的各類函數，可參考<a href="https://yijutseng.github.io/DataScienceRBook/eda.html#dplyr" target="_blank">dplyr教學</a>。</p>
+<p>地圖檔案部分，使用geojson檔案，來源為<a href="https://github.com/johan/world.geo.json" target="_blank">johan/world.geo.json</a>，因國家名稱在<a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">COVID-19 Data Repository by Johns Hopkins CSSE</a>和此地圖檔有些許出入，因此也做了人工的對應，有些國家名稱使用地圖檔為基準，有些使用COVID-19資料為基準，是全人眼與世界觀對應。</p>
+<p>因資料整理部分與shiny app開發本身較無關，也不一定要使用這種方式整理，除上述<a href="https://yijutseng.github.io/DataScienceRBook/eda.html#dplyr" target="_blank">dplyr教學</a>外，也可參考<a href="https://yijutseng.github.io/DataScienceRBook/manipulation.html#長表與寬表" target="_blank">長表轉寬表教學</a>。</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb78-3" data-line-number="3"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb78-4" data-line-number="4"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb78-5" data-line-number="5"><span class="kw">library</span>(leaflet)</a>
+<a class="sourceLine" id="cb78-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb78-7" data-line-number="7"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-8" data-line-number="8"><span class="co"># original data load and preprocessing</span></a>
+<a class="sourceLine" id="cb78-9" data-line-number="9"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb78-11" data-line-number="11">covid_case_wide&lt;-</a>
+<a class="sourceLine" id="cb78-12" data-line-number="12"><span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb78-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb78-14" data-line-number="14">covid_case_long&lt;-<span class="kw">gather</span>(covid_case_wide,date,num</a>
+<a class="sourceLine" id="cb78-15" data-line-number="15">                        ,<span class="op">-</span><span class="st">`</span><span class="dt">Province/State</span><span class="st">`</span>,<span class="op">-</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,<span class="op">-</span>Lat,<span class="op">-</span>Long) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-16" data-line-number="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date=</span>lubridate<span class="op">::</span><span class="kw">mdy</span>(date))</a>
+<a class="sourceLine" id="cb78-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb78-18" data-line-number="18">covid_case_long_country&lt;-covid_case_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-19" data-line-number="19"><span class="st">  </span><span class="kw">group_by</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,date) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-20" data-line-number="20"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Total_case_num=</span><span class="kw">sum</span>(num)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-21" data-line-number="21"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-22" data-line-number="22"><span class="st">  </span><span class="kw">group_by</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-23" data-line-number="23"><span class="st">  </span><span class="kw">arrange</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,date) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-24" data-line-number="24"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">New_case_num=</span>Total_case_num<span class="op">-</span><span class="kw">lag</span>(Total_case_num,<span class="dt">default =</span> <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb78-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb78-26" data-line-number="26">covid_death_wide&lt;-</a>
+<a class="sourceLine" id="cb78-27" data-line-number="27"><span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb78-28" data-line-number="28">covid_death_long&lt;-<span class="kw">gather</span>(covid_death_wide,date,num,</a>
+<a class="sourceLine" id="cb78-29" data-line-number="29">                         <span class="op">-</span><span class="st">`</span><span class="dt">Province/State</span><span class="st">`</span>,<span class="op">-</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,<span class="op">-</span>Lat,<span class="op">-</span>Long) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-30" data-line-number="30"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date=</span>lubridate<span class="op">::</span><span class="kw">mdy</span>(date))</a>
+<a class="sourceLine" id="cb78-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb78-32" data-line-number="32">covid_death_long_country&lt;-covid_death_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-33" data-line-number="33"><span class="st">  </span><span class="kw">group_by</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,date) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-34" data-line-number="34"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Total_death_num=</span><span class="kw">sum</span>(num)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-35" data-line-number="35"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-36" data-line-number="36"><span class="st">  </span><span class="kw">group_by</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-37" data-line-number="37"><span class="st">  </span><span class="kw">arrange</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,date) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-38" data-line-number="38"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">New_death_num=</span>Total_death_num<span class="op">-</span><span class="kw">lag</span>(Total_death_num,<span class="dt">default =</span> <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb78-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb78-40" data-line-number="40"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-41" data-line-number="41"><span class="co"># case and death data merge</span></a>
+<a class="sourceLine" id="cb78-42" data-line-number="42"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb78-44" data-line-number="44">covid_country&lt;-</a>
+<a class="sourceLine" id="cb78-45" data-line-number="45"><span class="st">  </span><span class="kw">left_join</span>(covid_case_long_country ,</a>
+<a class="sourceLine" id="cb78-46" data-line-number="46">             covid_death_long_country, </a>
+<a class="sourceLine" id="cb78-47" data-line-number="47">             <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;Country/Region&quot;</span>, <span class="st">&quot;date&quot;</span>)) </a>
+<a class="sourceLine" id="cb78-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb78-49" data-line-number="49"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-50" data-line-number="50"><span class="co"># clean country name</span></a>
+<a class="sourceLine" id="cb78-51" data-line-number="51"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-52" data-line-number="52">covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>&lt;-</a>
+<a class="sourceLine" id="cb78-53" data-line-number="53"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;[*]&quot;</span>,<span class="st">&quot;&quot;</span>,covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-54" data-line-number="54">covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>&lt;-</a>
+<a class="sourceLine" id="cb78-55" data-line-number="55"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;US&quot;</span>,<span class="st">&quot;United States of America&quot;</span>,</a>
+<a class="sourceLine" id="cb78-56" data-line-number="56">       covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-57" data-line-number="57">covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>&lt;-</a>
+<a class="sourceLine" id="cb78-58" data-line-number="58"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Korea, South&quot;</span>,<span class="st">&quot;South Korea&quot;</span>,covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-59" data-line-number="59">covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>&lt;-</a>
+<a class="sourceLine" id="cb78-60" data-line-number="60"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Serbia&quot;</span>,<span class="st">&quot;Republic of Serbia&quot;</span>,covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-61" data-line-number="61">covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>&lt;-</a>
+<a class="sourceLine" id="cb78-62" data-line-number="62"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Bahamas&quot;</span>,<span class="st">&quot;The Bahamas&quot;</span>,covid_country<span class="op">$</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-63" data-line-number="63"></a>
+<a class="sourceLine" id="cb78-64" data-line-number="64"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-65" data-line-number="65"><span class="co"># generate long data format</span></a>
+<a class="sourceLine" id="cb78-66" data-line-number="66"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-67" data-line-number="67">covid_country_long&lt;-</a>
+<a class="sourceLine" id="cb78-68" data-line-number="68"><span class="st">  </span><span class="kw">gather</span>(covid_country,num_type,num,</a>
+<a class="sourceLine" id="cb78-69" data-line-number="69">         <span class="op">-</span><span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,<span class="op">-</span>date) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-70" data-line-number="70"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-71" data-line-number="71"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Date=</span>date, <span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>=num, <span class="dt">Type=</span>num_type)</a>
+<a class="sourceLine" id="cb78-72" data-line-number="72"></a>
+<a class="sourceLine" id="cb78-73" data-line-number="73"></a>
+<a class="sourceLine" id="cb78-74" data-line-number="74"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-75" data-line-number="75"><span class="co"># days after 10th death</span></a>
+<a class="sourceLine" id="cb78-76" data-line-number="76"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-77" data-line-number="77">covid_country_long&lt;-covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-78" data-line-number="78"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nDays=</span><span class="kw">ifelse</span>(Type<span class="op">==</span><span class="st">&quot;Total_death_num&quot;</span> <span class="op">&amp;</span><span class="st">`</span><span class="dt">Case number</span><span class="st">`</span><span class="op">&gt;=</span><span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-79" data-line-number="79"><span class="st">  </span><span class="kw">group_by</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,Type) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>,Type,Date) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-80" data-line-number="80"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nDays=</span><span class="kw">cumsum</span>(nDays)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb78-81" data-line-number="81"></a>
+<a class="sourceLine" id="cb78-82" data-line-number="82"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-83" data-line-number="83"><span class="co"># map data</span></a>
+<a class="sourceLine" id="cb78-84" data-line-number="84"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-85" data-line-number="85"><span class="co"># from https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json</span></a>
+<a class="sourceLine" id="cb78-86" data-line-number="86">world_case &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb78-87" data-line-number="87"><span class="st">  </span>geojsonio<span class="op">::</span><span class="kw">geojson_read</span>(<span class="st">&quot;countries.geo.json&quot;</span>, <span class="dt">what =</span> <span class="st">&quot;sp&quot;</span>)</a>
+<a class="sourceLine" id="cb78-88" data-line-number="88"></a>
+<a class="sourceLine" id="cb78-89" data-line-number="89"><span class="co">## name</span></a>
+<a class="sourceLine" id="cb78-90" data-line-number="90">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-91" data-line-number="91"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Czech Republic&quot;</span>,<span class="st">&quot;Czechia&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-92" data-line-number="92">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-93" data-line-number="93"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Myanmar&quot;</span>,<span class="st">&quot;Burma&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-94" data-line-number="94">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-95" data-line-number="95"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;United Republic of Tanzania&quot;</span>,<span class="st">&quot;Tanzania&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-96" data-line-number="96">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-97" data-line-number="97"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Democratic Republic of the Congo&quot;</span>,<span class="st">&quot;Congo (Kinshasa)&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-98" data-line-number="98">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-99" data-line-number="99"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Republic of the Congo&quot;</span>,<span class="st">&quot;Congo (Brazzaville)&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-100" data-line-number="100">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-101" data-line-number="101"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Guinea Bissau&quot;</span>,<span class="st">&quot;Guinea-Bissau&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-102" data-line-number="102">world_case<span class="op">@</span>data<span class="op">$</span>name&lt;-</a>
+<a class="sourceLine" id="cb78-103" data-line-number="103"><span class="st">  </span><span class="kw">gsub</span>(<span class="st">&quot;Macedonia&quot;</span>,<span class="st">&quot;North Macedonia&quot;</span>,world_case<span class="op">@</span>data<span class="op">$</span>name)</a>
+<a class="sourceLine" id="cb78-104" data-line-number="104"></a>
+<a class="sourceLine" id="cb78-105" data-line-number="105"><span class="co">## color</span></a>
+<a class="sourceLine" id="cb78-106" data-line-number="106">bins &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>, <span class="ot">Inf</span>)</a>
+<a class="sourceLine" id="cb78-107" data-line-number="107">pal &lt;-<span class="st"> </span><span class="kw">colorBin</span>(<span class="st">&quot;YlOrRd&quot;</span>, <span class="dt">bins =</span> bins)</a>
+<a class="sourceLine" id="cb78-108" data-line-number="108"></a>
+<a class="sourceLine" id="cb78-109" data-line-number="109"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-110" data-line-number="110"><span class="co"># top n country</span></a>
+<a class="sourceLine" id="cb78-111" data-line-number="111"><span class="co">#####################################################################</span></a>
+<a class="sourceLine" id="cb78-112" data-line-number="112">TopCaseCountry&lt;-covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-113" data-line-number="113"><span class="st">  </span><span class="kw">filter</span>(Date<span class="op">==</span><span class="kw">max</span>(Date) <span class="op">&amp;</span><span class="st"> </span>Type<span class="op">==</span><span class="st">&quot;Total_case_num&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-114" data-line-number="114"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-115" data-line-number="115"><span class="st">  </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-116" data-line-number="116"></a>
+<a class="sourceLine" id="cb78-117" data-line-number="117">TopNewCaseCountry&lt;-covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-118" data-line-number="118"><span class="st">  </span><span class="kw">filter</span>(Date<span class="op">==</span><span class="kw">max</span>(Date) <span class="op">&amp;</span><span class="st"> </span>Type<span class="op">==</span><span class="st">&quot;New_case_num&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-119" data-line-number="119"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-120" data-line-number="120"><span class="st">  </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-121" data-line-number="121"></a>
+<a class="sourceLine" id="cb78-122" data-line-number="122">TopDeathCountry&lt;-covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-123" data-line-number="123"><span class="st">  </span><span class="kw">filter</span>(Date<span class="op">==</span><span class="kw">max</span>(Date) <span class="op">&amp;</span><span class="st"> </span>Type<span class="op">==</span><span class="st">&quot;Total_death_num&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-124" data-line-number="124"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-125" data-line-number="125"><span class="st">  </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb78-126" data-line-number="126"></a>
+<a class="sourceLine" id="cb78-127" data-line-number="127">TopCFRCountry&lt;-covid_country_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-128" data-line-number="128"><span class="st">  </span><span class="kw">filter</span>(Date<span class="op">==</span><span class="kw">max</span>(Date) <span class="op">&amp;</span><span class="st"> </span>Type<span class="op">==</span><span class="st">&quot;Total_CFR_num&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-129" data-line-number="129"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Case number</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-130" data-line-number="130"><span class="st">  </span><span class="kw">pull</span>(<span class="st">`</span><span class="dt">Country/Region</span><span class="st">`</span>)</a></code></pre></div>
+<p>以上即為<strong>2019年末至2020年的新冠肺炎 (COVID-19)流行趨勢儀表板</strong>的Shiny App撰寫說明，程式也已上版，可由 <a href="http://shiny.yjtseng.info/content/18/" target="_blank">Demo</a>網址查看。</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-shinydashboard">
+<p>Chang, Winston, and Barbara Borges Ribeiro. 2018. <em>Shinydashboard: Create Dashboards with ’Shiny’</em>. <a href="https://CRAN.R-project.org/package=shinydashboard">https://CRAN.R-project.org/package=shinydashboard</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="js.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "Microsoft JhengHei",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

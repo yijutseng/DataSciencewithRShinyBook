@@ -1,0 +1,12 @@
+name: datasciencewithrshinybook
+title: DataSciencewithRShinyBook
+username: yjtseng
+account: yjtseng
+server: 120.126.18.144
+hostUrl: http://120.126.18.144:3939/__api__
+appId: 20
+bundleId: 257
+url: http://120.126.18.144:3939/content/20/
+when: 1586190169.2529
+asMultiple: FALSE
+asStatic: FALSE

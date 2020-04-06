@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1500519441",
+    "hash" : "37960213",
     "id" : "45A8A73B",
-    "lastKnownWriteTime" : 1584635521,
-    "last_content_update" : 1584635521333,
+    "lastKnownWriteTime" : 1584951000,
+    "last_content_update" : 1584951000,
     "path" : "/Volumes/GoogleDrive/我的雲端硬碟/DataSciencewithRShinyBook/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
-        "cursorPosition" : "15,20",
-        "scrollLine" : "10"
+        "cursorPosition" : "28,19",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

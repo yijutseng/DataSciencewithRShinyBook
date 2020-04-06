@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Ch. 1 前言 | 使用R Shiny設計資料科學應用程式</title>
-  <meta name="description" content="Ch. 1 前言 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <title>Ch 1 前言 | 使用R Shiny設計資料科學應用程式</title>
+  <meta name="description" content="Ch 1 前言 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Ch. 1 前言 | 使用R Shiny設計資料科學應用程式" />
+  <meta property="og:title" content="Ch 1 前言 | 使用R Shiny設計資料科學應用程式" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Ch. 1 前言 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta property="og:description" content="Ch 1 前言 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Ch. 1 前言 | 使用R Shiny設計資料科學應用程式" />
+  <meta name="twitter:title" content="Ch 1 前言 | 使用R Shiny設計資料科學應用程式" />
   
-  <meta name="twitter:description" content="Ch. 1 前言 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta name="twitter:description" content="Ch 1 前言 | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
   
 
 <meta name="author" content="曾意儒 Yi-Ju Tseng" />
 
 
-<meta name="date" content="2020-03-20" />
+<meta name="date" content="2020-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -77,7 +77,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -140,45 +140,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li><a href="index.html#preface"></a></li>
+<li class="part"><span><b>I 快速上手</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 前言</a></li>
 <li class="chapter" data-level="2" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>2</b> Shiny App架構</a><ul>
-<li class="chapter" data-level="2.1" data-path="structure.html"><a href="structure.html#使用者介面-user-interface"><i class="fa fa-check"></i><b>2.1</b> 使用者介面 (User Interface)</a></li>
-<li class="chapter" data-level="2.2" data-path="structure.html"><a href="structure.html#伺服器端程式-server-instruction"><i class="fa fa-check"></i><b>2.2</b> 伺服器端程式 (Server Instruction)</a></li>
-<li class="chapter" data-level="2.3" data-path="structure.html"><a href="structure.html#單一整合程式-app.r"><i class="fa fa-check"></i><b>2.3</b> 單一整合程式 app.R</a></li>
+<li class="chapter" data-level="2.1" data-path="structure.html"><a href="structure.html#單一整合程式-app.r"><i class="fa fa-check"></i><b>2.1</b> 單一整合程式 app.R</a></li>
+<li class="chapter" data-level="2.2" data-path="structure.html"><a href="structure.html#使用者介面-user-interface"><i class="fa fa-check"></i><b>2.2</b> 使用者介面 (User Interface)</a></li>
+<li class="chapter" data-level="2.3" data-path="structure.html"><a href="structure.html#伺服器端程式-server-instruction"><i class="fa fa-check"></i><b>2.3</b> 伺服器端程式 (Server Instruction)</a></li>
+<li class="chapter" data-level="2.4" data-path="structure.html"><a href="structure.html#script"><i class="fa fa-check"></i><b>2.4</b> 除了前後端以外的程式碼</a></li>
+<li class="chapter" data-level="2.5" data-path="structure.html"><a href="structure.html#參考資料"><i class="fa fa-check"></i><b>2.5</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="input.html"><a href="input.html"><i class="fa fa-check"></i><b>3</b> 輸入Inputs</a></li>
-<li class="chapter" data-level="4" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>4</b> 輸出 Outputs</a></li>
-<li class="chapter" data-level="5" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>5</b> 伺服器端程式 Server</a></li>
-<li class="chapter" data-level="6" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>6</b> 客製化使用者介面</a><ul>
-<li class="chapter" data-level="6.1" data-path="design.html"><a href="design.html#樣式模板"><i class="fa fa-check"></i><b>6.1</b> 樣式模板</a></li>
-<li class="chapter" data-level="6.2" data-path="design.html"><a href="design.html#section"><i class="fa fa-check"></i><b>6.2</b> </a></li>
-<li class="chapter" data-level="6.3" data-path="design.html"><a href="design.html#html-101"><i class="fa fa-check"></i><b>6.3</b> HTML 101</a></li>
-<li class="chapter" data-level="6.4" data-path="design.html"><a href="design.html#r---html"><i class="fa fa-check"></i><b>6.4</b> R -&gt; HTML</a></li>
-<li class="chapter" data-level="6.5" data-path="design.html"><a href="design.html#html-ui"><i class="fa fa-check"></i><b>6.5</b> HTML UI</a></li>
-<li class="chapter" data-level="6.6" data-path="design.html"><a href="design.html#layout"><i class="fa fa-check"></i><b>6.6</b> Layout</a></li>
-<li class="chapter" data-level="6.7" data-path="design.html"><a href="design.html#panels"><i class="fa fa-check"></i><b>6.7</b> Panels</a></li>
-<li class="chapter" data-level="6.8" data-path="design.html"><a href="design.html#css"><i class="fa fa-check"></i><b>6.8</b> CSS</a></li>
-<li class="chapter" data-level="6.9" data-path="design.html"><a href="design.html#bootstrap"><i class="fa fa-check"></i><b>6.9</b> Bootstrap</a></li>
-<li class="chapter" data-level="6.10" data-path="design.html"><a href="design.html#sass"><i class="fa fa-check"></i><b>6.10</b> Sass</a></li>
-<li class="chapter" data-level="6.11" data-path="design.html"><a href="design.html#參考資料"><i class="fa fa-check"></i><b>6.11</b> 參考資料</a></li>
+<li class="chapter" data-level="3" data-path="layout.html"><a href="layout.html"><i class="fa fa-check"></i><b>3</b> 版面設定</a><ul>
+<li class="chapter" data-level="3.1" data-path="layout.html"><a href="layout.html#頁面設定函數xxxpage"><i class="fa fa-check"></i><b>3.1</b> 頁面設定函數xxxPage()</a></li>
+<li class="chapter" data-level="3.2" data-path="layout.html"><a href="layout.html#xxxlayout-和-xxxpanel"><i class="fa fa-check"></i><b>3.2</b> xxxLayout() 和 xxxPanel()</a></li>
+<li class="chapter" data-level="3.3" data-path="layout.html"><a href="layout.html#row"><i class="fa fa-check"></i><b>3.3</b> row 與 column</a></li>
+<li class="chapter" data-level="3.4" data-path="layout.html"><a href="layout.html#參考資料-1"><i class="fa fa-check"></i><b>3.4</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>7</b> 儀表板</a></li>
-<li class="chapter" data-level="8" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>8</b> 介面與效能測試</a><ul>
-<li class="chapter" data-level="8.1" data-path="test.html"><a href="test.html#介面測試"><i class="fa fa-check"></i><b>8.1</b> 介面測試</a></li>
-<li class="chapter" data-level="8.2" data-path="test.html"><a href="test.html#效能測試"><i class="fa fa-check"></i><b>8.2</b> 效能測試</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="test.html"><a href="test.html#基準測試-benchmark"><i class="fa fa-check"></i><b>8.2.1</b> 基準測試 Benchmark</a></li>
-<li class="chapter" data-level="8.2.2" data-path="test.html"><a href="test.html#效能分析-analyze"><i class="fa fa-check"></i><b>8.2.2</b> 效能分析 Analyze</a></li>
-<li class="chapter" data-level="8.2.3" data-path="test.html"><a href="test.html#程式最佳化-optimize"><i class="fa fa-check"></i><b>8.2.3</b> 程式最佳化 Optimize</a></li>
+<li class="chapter" data-level="4" data-path="input.html"><a href="input.html"><i class="fa fa-check"></i><b>4</b> 輸入Inputs</a><ul>
+<li class="chapter" data-level="4.1" data-path="input.html"><a href="input.html#參考資料-2"><i class="fa fa-check"></i><b>4.1</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="test.html"><a href="test.html#參考資料-1"><i class="fa fa-check"></i><b>8.3</b> 參考資料</a></li>
+<li class="chapter" data-level="5" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>5</b> 輸出 Outputs</a><ul>
+<li class="chapter" data-level="5.1" data-path="output.html"><a href="output.html#內建輸出元件"><i class="fa fa-check"></i><b>5.1</b> 內建輸出元件</a></li>
+<li class="chapter" data-level="5.2" data-path="output.html"><a href="output.html#其他常用輸出元件"><i class="fa fa-check"></i><b>5.2</b> 其他常用輸出元件</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="output.html"><a href="output.html#動態表格"><i class="fa fa-check"></i><b>5.2.1</b> 動態表格</a></li>
+<li class="chapter" data-level="5.2.2" data-path="output.html"><a href="output.html#動態地圖"><i class="fa fa-check"></i><b>5.2.2</b> 動態地圖</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="js.html"><a href="js.html"><i class="fa fa-check"></i><b>9</b> 客製化使用者介面</a><ul>
-<li class="chapter" data-level="9.1" data-path="js.html"><a href="js.html#d3.js"><i class="fa fa-check"></i><b>9.1</b> D3.js</a></li>
-<li class="chapter" data-level="9.2" data-path="js.html"><a href="js.html#javascript"><i class="fa fa-check"></i><b>9.2</b> JavaScript</a></li>
+<li class="chapter" data-level="5.3" data-path="output.html"><a href="output.html#參考資料-3"><i class="fa fa-check"></i><b>5.3</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="deploy.html"><a href="deploy.html"><i class="fa fa-check"></i><b>10</b> 將Shiny App上線</a></li>
+<li class="chapter" data-level="6" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>6</b> 伺服器端程式 Server</a><ul>
+<li class="chapter" data-level="6.1" data-path="server.html"><a href="server.html#渲染函數-render-function"><i class="fa fa-check"></i><b>6.1</b> 渲染函數 Render function</a></li>
+<li class="chapter" data-level="6.2" data-path="server.html"><a href="server.html#reactive"><i class="fa fa-check"></i><b>6.2</b> 反應函數 Reactive function</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="server.html"><a href="server.html#反應函數-reactive"><i class="fa fa-check"></i><b>6.2.1</b> 反應函數 reactive()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="server.html"><a href="server.html#不反應-isolate"><i class="fa fa-check"></i><b>6.2.2</b> 不反應 isolate()</a></li>
+<li class="chapter" data-level="6.2.3" data-path="server.html"><a href="server.html#按鈕觸發-observeevent"><i class="fa fa-check"></i><b>6.2.3</b> 按鈕觸發 observeEvent()</a></li>
+<li class="chapter" data-level="6.2.4" data-path="server.html"><a href="server.html#延遲反應-eventreactive"><i class="fa fa-check"></i><b>6.2.4</b> 延遲反應 eventReactive()</a></li>
+<li class="chapter" data-level="6.2.5" data-path="server.html"><a href="server.html#reactivevalues"><i class="fa fa-check"></i><b>6.2.5</b> reactiveValues()</a></li>
+<li class="chapter" data-level="6.2.6" data-path="server.html"><a href="server.html#reactivetimer"><i class="fa fa-check"></i><b>6.2.6</b> reactiveTimer()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="server.html"><a href="server.html#參考資料-4"><i class="fa fa-check"></i><b>6.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploy.html"><a href="deploy.html"><i class="fa fa-check"></i><b>7</b> 將Shiny App上線</a></li>
+<li class="part"><span><b>II 進階內容</b></span></li>
+<li class="chapter" data-level="8" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>8</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="8.1" data-path="design.html"><a href="design.html#樣式模板"><i class="fa fa-check"></i><b>8.1</b> 樣式模板</a></li>
+<li class="chapter" data-level="8.2" data-path="design.html"><a href="design.html#r---html"><i class="fa fa-check"></i><b>8.2</b> R -&gt; HTML</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="design.html"><a href="design.html#html-101"><i class="fa fa-check"></i><b>8.2.1</b> HTML 101</a></li>
+<li class="chapter" data-level="8.2.2" data-path="design.html"><a href="design.html#在r中撰寫html"><i class="fa fa-check"></i><b>8.2.2</b> 在R中撰寫HTML</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="design.html"><a href="design.html#css"><i class="fa fa-check"></i><b>8.3</b> CSS</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="design.html"><a href="design.html#bootstrap-and-sass"><i class="fa fa-check"></i><b>8.3.1</b> Bootstrap and Sass</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="design.html"><a href="design.html#參考資料-5"><i class="fa fa-check"></i><b>8.4</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>9</b> 儀表板</a><ul>
+<li class="chapter" data-level="9.1" data-path="dashboard.html"><a href="dashboard.html#開發儀表板步驟"><i class="fa fa-check"></i><b>9.1</b> 開發儀表板步驟</a></li>
+<li class="chapter" data-level="9.2" data-path="dashboard.html"><a href="dashboard.html#儀表板樣式設計"><i class="fa fa-check"></i><b>9.2</b> 儀表板樣式設計</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dashboard.html"><a href="dashboard.html#dashboardpage"><i class="fa fa-check"></i><b>9.2.1</b> dashboardPage()</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dashboard.html"><a href="dashboard.html#標頭"><i class="fa fa-check"></i><b>9.2.2</b> 標頭</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dashboard.html"><a href="dashboard.html#側邊欄位"><i class="fa fa-check"></i><b>9.2.3</b> 側邊欄位</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dashboard.html"><a href="dashboard.html#主頁面"><i class="fa fa-check"></i><b>9.2.4</b> 主頁面</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dashboard.html"><a href="dashboard.html#參考資料-6"><i class="fa fa-check"></i><b>9.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="covid19.html"><a href="covid19.html"><i class="fa fa-check"></i><b>10</b> 新冠肺炎儀表板範例</a><ul>
+<li class="chapter" data-level="10.1" data-path="covid19.html"><a href="covid19.html#儀表板主要架構"><i class="fa fa-check"></i><b>10.1</b> 儀表板主要架構</a></li>
+<li class="chapter" data-level="10.2" data-path="covid19.html"><a href="covid19.html#流行地圖-ui"><i class="fa fa-check"></i><b>10.2</b> 流行地圖 UI</a></li>
+<li class="chapter" data-level="10.3" data-path="covid19.html"><a href="covid19.html#各國圖表-ui"><i class="fa fa-check"></i><b>10.3</b> 各國圖表 UI</a></li>
+<li class="chapter" data-level="10.4" data-path="covid19.html"><a href="covid19.html#伺服器端程式"><i class="fa fa-check"></i><b>10.4</b> 伺服器端程式</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="covid19.html"><a href="covid19.html#ui文字設定"><i class="fa fa-check"></i><b>10.4.1</b> UI文字設定</a></li>
+<li class="chapter" data-level="10.4.2" data-path="covid19.html"><a href="covid19.html#ui圖表設定"><i class="fa fa-check"></i><b>10.4.2</b> UI圖表設定</a></li>
+<li class="chapter" data-level="10.4.3" data-path="covid19.html"><a href="covid19.html#更新圖片的反應函數"><i class="fa fa-check"></i><b>10.4.3</b> 更新圖片的反應函數</a></li>
+<li class="chapter" data-level="10.4.4" data-path="covid19.html"><a href="covid19.html#更新資料的反應函數"><i class="fa fa-check"></i><b>10.4.4</b> 更新資料的反應函數</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="covid19.html"><a href="covid19.html#資料整理獨立程式碼"><i class="fa fa-check"></i><b>10.5</b> 資料整理獨立程式碼</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="js.html"><a href="js.html"><i class="fa fa-check"></i><b>11</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="11.1" data-path="js.html"><a href="js.html#d3.js"><i class="fa fa-check"></i><b>11.1</b> D3.js</a></li>
+<li class="chapter" data-level="11.2" data-path="js.html"><a href="js.html#javascript"><i class="fa fa-check"></i><b>11.2</b> JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>12</b> 介面與效能測試</a><ul>
+<li class="chapter" data-level="12.1" data-path="test.html"><a href="test.html#介面測試"><i class="fa fa-check"></i><b>12.1</b> 介面測試</a></li>
+<li class="chapter" data-level="12.2" data-path="test.html"><a href="test.html#效能測試"><i class="fa fa-check"></i><b>12.2</b> 效能測試</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="test.html"><a href="test.html#基準測試-benchmark"><i class="fa fa-check"></i><b>12.2.1</b> 基準測試 Benchmark</a></li>
+<li class="chapter" data-level="12.2.2" data-path="test.html"><a href="test.html#效能分析-analyze"><i class="fa fa-check"></i><b>12.2.2</b> 效能分析 Analyze</a></li>
+<li class="chapter" data-level="12.2.3" data-path="test.html"><a href="test.html#程式最佳化-optimize"><i class="fa fa-check"></i><b>12.2.3</b> 程式最佳化 Optimize</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="test.html"><a href="test.html#參考資料-7"><i class="fa fa-check"></i><b>12.3</b> 參考資料</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者資訊</a></li>
-<li class="chapter" data-level="" data-path="參考資料-2.html"><a href="參考資料-2.html"><i class="fa fa-check"></i>參考資料</a></li>
+<li class="chapter" data-level="" data-path="-8.html"><a href="-8.html"><i class="fa fa-check"></i>參考資料</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -200,24 +249,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
-<h1><span class="header-section-number">Ch. 1</span> 前言</h1>
-<p><a href="https://shiny.rstudio.com/" target="_blank">Shiny App</a> 是 <a href="https://rstudio.com/" target="_blank">RStudio</a>推出供R語言使用的<strong>網頁應用框架（Web application framework）</strong>，透過Shiny，使用者可以輕鬆地將資料分析結果轉換成<strong>互動式的網頁應用程式</strong>，簡單來說就是動態網站，如果不做客製化的使用者介面調整，不用另外學習其他網頁程式語言（如HTML, CSS, JavaScript等），若要使用Shiny， <a href="https://rstudio.com/products/rstudio/download/#download" target="_blank">RStudio IDE</a>提供完整測試預覽功能，建議一起使用。使用前必須先安裝並載入<code>shiny</code> package <span class="citation">(Chang et al. <a href="#ref-R-shiny" role="doc-biblioref">2020</a>)</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;shiny&quot;</span>)</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="kw">library</span>(shiny)</a></code></pre></div>
+<h1><span class="header-section-number">Ch 1</span> 前言</h1>
+<p><a href="https://shiny.rstudio.com/" target="_blank">Shiny App</a> 是 <a href="https://rstudio.com/" target="_blank">RStudio</a>推出供R語言使用的<strong>網頁應用框架（Web application framework）</strong>，透過Shiny，使用者可以輕鬆地將資料分析結果轉換成<strong>互動式的網頁應用程式</strong>，簡單來說就是動態網站，如果不做客製化的使用者介面調整，不用另外學習其他網頁程式語言（如HTML, CSS, JavaScript等），若要使用Shiny， <a href="https://rstudio.com/products/rstudio/download/#download" target="_blank">RStudio IDE</a>提供完整測試預覽功能，建議一起使用。使用前必須先安裝並載入<code>shiny</code> package <span class="citation">(Chang et al. <a href="#ref-R-shiny">2020</a>)</span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;shiny&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">library</span>(shiny)</a></code></pre></div>
 <p>安裝完成後，若想快速體驗Shiny App的效果，可執行下列程式碼，查看Shiny package內提供的11個網頁部署範例，以及參考範例相對應的原始碼：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">runExample</span>(<span class="st">&quot;01_hello&quot;</span>) <span class="co"># a histogram</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">runExample</span>(<span class="st">&quot;02_text&quot;</span>) <span class="co"># tables and data frames</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="kw">runExample</span>(<span class="st">&quot;03_reactivity&quot;</span>) <span class="co"># a reactive expression</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="kw">runExample</span>(<span class="st">&quot;04_mpg&quot;</span>) <span class="co"># global variables</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="kw">runExample</span>(<span class="st">&quot;05_sliders&quot;</span>) <span class="co"># slider bars</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="kw">runExample</span>(<span class="st">&quot;06_tabsets&quot;</span>) <span class="co"># tabbed panels</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="kw">runExample</span>(<span class="st">&quot;07_widgets&quot;</span>) <span class="co"># help text and submit buttons</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="kw">runExample</span>(<span class="st">&quot;08_html&quot;</span>) <span class="co"># Shiny app built from HTML</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="kw">runExample</span>(<span class="st">&quot;09_upload&quot;</span>) <span class="co"># file upload wizard</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="kw">runExample</span>(<span class="st">&quot;10_download&quot;</span>) <span class="co"># file download wizard</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="kw">runExample</span>(<span class="st">&quot;11_timer&quot;</span>) <span class="co"># an automated timer</span></a></code></pre></div>
-<p>使開始資料分析專案類似，若有使用RStudio IDE，在開始建構Shiny App前建議先新增一個Shiny Project，建構方式為:</p>
-<p><embed src="figure/ShinyProject.mp4" autoplay="autoplay" style="width:90.0%" height="400" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">runExample</span>(<span class="st">&quot;01_hello&quot;</span>) <span class="co"># a histogram</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">runExample</span>(<span class="st">&quot;02_text&quot;</span>) <span class="co"># tables and data frames</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">runExample</span>(<span class="st">&quot;03_reactivity&quot;</span>) <span class="co"># a reactive expression</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">runExample</span>(<span class="st">&quot;04_mpg&quot;</span>) <span class="co"># global variables</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">runExample</span>(<span class="st">&quot;05_sliders&quot;</span>) <span class="co"># slider bars</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw">runExample</span>(<span class="st">&quot;06_tabsets&quot;</span>) <span class="co"># tabbed panels</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw">runExample</span>(<span class="st">&quot;07_widgets&quot;</span>) <span class="co"># help text and submit buttons</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw">runExample</span>(<span class="st">&quot;08_html&quot;</span>) <span class="co"># Shiny app built from HTML</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw">runExample</span>(<span class="st">&quot;09_upload&quot;</span>) <span class="co"># file upload wizard</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw">runExample</span>(<span class="st">&quot;10_download&quot;</span>) <span class="co"># file download wizard</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="kw">runExample</span>(<span class="st">&quot;11_timer&quot;</span>) <span class="co"># an automated timer</span></a></code></pre></div>
+<p>使開始資料分析專案類似，若有使用RStudio IDE，在開始建構Shiny App前建議先新增一個Shiny Project，建構方式可參考下方影片:</p>
+<iframe width="90%" height="400" src="https://www.youtube.com/embed/r186TTpluYw" frameborder="0" autoplay="1">
+</iframe>
+<p>步驟如下:</p>
 <ol style="list-style-type: decimal">
 <li>點選<strong>Create a Project</strong></li>
 <li>依需求選擇需要開新資料夾或是使用原有資料夾</li>
@@ -226,9 +277,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>完成新增Shiny Project，資料夾中會有一個<strong>app.R</strong>檔案，即為撰寫Shiny App前後端程式碼的地方</li>
 <li>點選程式碼上方的Run，就會跑出經典的Shiny App範例程式</li>
 </ol>
+<p>Run App所在位置：</p>
 <p><img src="figure/run.png" width="450" /></p>
-<p>經典的直方圖Shiny範例程式：
-<img src="figure/firstEx.png" width="913" /></p>
+<p>經典的直方圖Shiny範例程式：</p>
+<p><img src="figure/firstEx.png" width="913" /></p>
+<p>本書接下來的章節會針對Shiny App架構、前後端程式與元件、客製化設計、程式測試以及部屬上線等內容逐一介紹。</p>
 
 </div>
 <h3>References</h3>
@@ -262,11 +315,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -278,10 +332,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },

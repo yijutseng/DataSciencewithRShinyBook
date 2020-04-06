@@ -1,0 +1,15 @@
+`r if (knitr::is_html_output()) '
+# 參考資料 {-}
+'`
+
+[How to Start Shiny tutorial](https://shiny.rstudio.com/tutorial/){target="_blank"}
+
+[Dynamic Dashboards with Shiny](https://rstudio.com/resources/webinars/dynamic-dashboards-with-shiny/){target="_blank"}
+
+[Mastering Shiny](https://mastering-shiny.org/){target="_blank"}
+
+https://resources.rstudio.com/shiny-2/shiny-cheat-sheet
+
+https://resources.rstudio.com/shiny-2/shiny-1-1-0-scaling-shiny-with-async
+
+https://resources.rstudio.com/shiny-2/make-shiny-fast-by-doing-as-little-work-as-possible-alan-dipert

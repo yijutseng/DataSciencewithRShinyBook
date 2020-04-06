@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Ch. 5 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式</title>
-  <meta name="description" content="Ch. 5 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <title>Ch 6 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式</title>
+  <meta name="description" content="Ch 6 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Ch. 5 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式" />
+  <meta property="og:title" content="Ch 6 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Ch. 5 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta property="og:description" content="Ch 6 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Ch. 5 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式" />
+  <meta name="twitter:title" content="Ch 6 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式" />
   
-  <meta name="twitter:description" content="Ch. 5 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
+  <meta name="twitter:description" content="Ch 6 伺服器端程式 Server | 使用R Shiny設計資料科學應用程式 R Shiny for Data Science Application" />
   
 
 <meta name="author" content="曾意儒 Yi-Ju Tseng" />
 
 
-<meta name="date" content="2020-03-20" />
+<meta name="date" content="2020-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="output.html"/>
-<link rel="next" href="design.html"/>
+<link rel="next" href="deploy.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -77,7 +77,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -140,45 +140,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li><a href="index.html#preface"></a></li>
+<li class="part"><span><b>I 快速上手</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 前言</a></li>
 <li class="chapter" data-level="2" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>2</b> Shiny App架構</a><ul>
-<li class="chapter" data-level="2.1" data-path="structure.html"><a href="structure.html#使用者介面-user-interface"><i class="fa fa-check"></i><b>2.1</b> 使用者介面 (User Interface)</a></li>
-<li class="chapter" data-level="2.2" data-path="structure.html"><a href="structure.html#伺服器端程式-server-instruction"><i class="fa fa-check"></i><b>2.2</b> 伺服器端程式 (Server Instruction)</a></li>
-<li class="chapter" data-level="2.3" data-path="structure.html"><a href="structure.html#單一整合程式-app.r"><i class="fa fa-check"></i><b>2.3</b> 單一整合程式 app.R</a></li>
+<li class="chapter" data-level="2.1" data-path="structure.html"><a href="structure.html#單一整合程式-app.r"><i class="fa fa-check"></i><b>2.1</b> 單一整合程式 app.R</a></li>
+<li class="chapter" data-level="2.2" data-path="structure.html"><a href="structure.html#使用者介面-user-interface"><i class="fa fa-check"></i><b>2.2</b> 使用者介面 (User Interface)</a></li>
+<li class="chapter" data-level="2.3" data-path="structure.html"><a href="structure.html#伺服器端程式-server-instruction"><i class="fa fa-check"></i><b>2.3</b> 伺服器端程式 (Server Instruction)</a></li>
+<li class="chapter" data-level="2.4" data-path="structure.html"><a href="structure.html#script"><i class="fa fa-check"></i><b>2.4</b> 除了前後端以外的程式碼</a></li>
+<li class="chapter" data-level="2.5" data-path="structure.html"><a href="structure.html#參考資料"><i class="fa fa-check"></i><b>2.5</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="input.html"><a href="input.html"><i class="fa fa-check"></i><b>3</b> 輸入Inputs</a></li>
-<li class="chapter" data-level="4" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>4</b> 輸出 Outputs</a></li>
-<li class="chapter" data-level="5" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>5</b> 伺服器端程式 Server</a></li>
-<li class="chapter" data-level="6" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>6</b> 客製化使用者介面</a><ul>
-<li class="chapter" data-level="6.1" data-path="design.html"><a href="design.html#樣式模板"><i class="fa fa-check"></i><b>6.1</b> 樣式模板</a></li>
-<li class="chapter" data-level="6.2" data-path="design.html"><a href="design.html#section"><i class="fa fa-check"></i><b>6.2</b> </a></li>
-<li class="chapter" data-level="6.3" data-path="design.html"><a href="design.html#html-101"><i class="fa fa-check"></i><b>6.3</b> HTML 101</a></li>
-<li class="chapter" data-level="6.4" data-path="design.html"><a href="design.html#r---html"><i class="fa fa-check"></i><b>6.4</b> R -&gt; HTML</a></li>
-<li class="chapter" data-level="6.5" data-path="design.html"><a href="design.html#html-ui"><i class="fa fa-check"></i><b>6.5</b> HTML UI</a></li>
-<li class="chapter" data-level="6.6" data-path="design.html"><a href="design.html#layout"><i class="fa fa-check"></i><b>6.6</b> Layout</a></li>
-<li class="chapter" data-level="6.7" data-path="design.html"><a href="design.html#panels"><i class="fa fa-check"></i><b>6.7</b> Panels</a></li>
-<li class="chapter" data-level="6.8" data-path="design.html"><a href="design.html#css"><i class="fa fa-check"></i><b>6.8</b> CSS</a></li>
-<li class="chapter" data-level="6.9" data-path="design.html"><a href="design.html#bootstrap"><i class="fa fa-check"></i><b>6.9</b> Bootstrap</a></li>
-<li class="chapter" data-level="6.10" data-path="design.html"><a href="design.html#sass"><i class="fa fa-check"></i><b>6.10</b> Sass</a></li>
-<li class="chapter" data-level="6.11" data-path="design.html"><a href="design.html#參考資料"><i class="fa fa-check"></i><b>6.11</b> 參考資料</a></li>
+<li class="chapter" data-level="3" data-path="layout.html"><a href="layout.html"><i class="fa fa-check"></i><b>3</b> 版面設定</a><ul>
+<li class="chapter" data-level="3.1" data-path="layout.html"><a href="layout.html#頁面設定函數xxxpage"><i class="fa fa-check"></i><b>3.1</b> 頁面設定函數xxxPage()</a></li>
+<li class="chapter" data-level="3.2" data-path="layout.html"><a href="layout.html#xxxlayout-和-xxxpanel"><i class="fa fa-check"></i><b>3.2</b> xxxLayout() 和 xxxPanel()</a></li>
+<li class="chapter" data-level="3.3" data-path="layout.html"><a href="layout.html#row"><i class="fa fa-check"></i><b>3.3</b> row 與 column</a></li>
+<li class="chapter" data-level="3.4" data-path="layout.html"><a href="layout.html#參考資料-1"><i class="fa fa-check"></i><b>3.4</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>7</b> 儀表板</a></li>
-<li class="chapter" data-level="8" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>8</b> 介面與效能測試</a><ul>
-<li class="chapter" data-level="8.1" data-path="test.html"><a href="test.html#介面測試"><i class="fa fa-check"></i><b>8.1</b> 介面測試</a></li>
-<li class="chapter" data-level="8.2" data-path="test.html"><a href="test.html#效能測試"><i class="fa fa-check"></i><b>8.2</b> 效能測試</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="test.html"><a href="test.html#基準測試-benchmark"><i class="fa fa-check"></i><b>8.2.1</b> 基準測試 Benchmark</a></li>
-<li class="chapter" data-level="8.2.2" data-path="test.html"><a href="test.html#效能分析-analyze"><i class="fa fa-check"></i><b>8.2.2</b> 效能分析 Analyze</a></li>
-<li class="chapter" data-level="8.2.3" data-path="test.html"><a href="test.html#程式最佳化-optimize"><i class="fa fa-check"></i><b>8.2.3</b> 程式最佳化 Optimize</a></li>
+<li class="chapter" data-level="4" data-path="input.html"><a href="input.html"><i class="fa fa-check"></i><b>4</b> 輸入Inputs</a><ul>
+<li class="chapter" data-level="4.1" data-path="input.html"><a href="input.html#參考資料-2"><i class="fa fa-check"></i><b>4.1</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="test.html"><a href="test.html#參考資料-1"><i class="fa fa-check"></i><b>8.3</b> 參考資料</a></li>
+<li class="chapter" data-level="5" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>5</b> 輸出 Outputs</a><ul>
+<li class="chapter" data-level="5.1" data-path="output.html"><a href="output.html#內建輸出元件"><i class="fa fa-check"></i><b>5.1</b> 內建輸出元件</a></li>
+<li class="chapter" data-level="5.2" data-path="output.html"><a href="output.html#其他常用輸出元件"><i class="fa fa-check"></i><b>5.2</b> 其他常用輸出元件</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="output.html"><a href="output.html#動態表格"><i class="fa fa-check"></i><b>5.2.1</b> 動態表格</a></li>
+<li class="chapter" data-level="5.2.2" data-path="output.html"><a href="output.html#動態地圖"><i class="fa fa-check"></i><b>5.2.2</b> 動態地圖</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="js.html"><a href="js.html"><i class="fa fa-check"></i><b>9</b> 客製化使用者介面</a><ul>
-<li class="chapter" data-level="9.1" data-path="js.html"><a href="js.html#d3.js"><i class="fa fa-check"></i><b>9.1</b> D3.js</a></li>
-<li class="chapter" data-level="9.2" data-path="js.html"><a href="js.html#javascript"><i class="fa fa-check"></i><b>9.2</b> JavaScript</a></li>
+<li class="chapter" data-level="5.3" data-path="output.html"><a href="output.html#參考資料-3"><i class="fa fa-check"></i><b>5.3</b> 參考資料</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="deploy.html"><a href="deploy.html"><i class="fa fa-check"></i><b>10</b> 將Shiny App上線</a></li>
+<li class="chapter" data-level="6" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>6</b> 伺服器端程式 Server</a><ul>
+<li class="chapter" data-level="6.1" data-path="server.html"><a href="server.html#渲染函數-render-function"><i class="fa fa-check"></i><b>6.1</b> 渲染函數 Render function</a></li>
+<li class="chapter" data-level="6.2" data-path="server.html"><a href="server.html#reactive"><i class="fa fa-check"></i><b>6.2</b> 反應函數 Reactive function</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="server.html"><a href="server.html#反應函數-reactive"><i class="fa fa-check"></i><b>6.2.1</b> 反應函數 reactive()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="server.html"><a href="server.html#不反應-isolate"><i class="fa fa-check"></i><b>6.2.2</b> 不反應 isolate()</a></li>
+<li class="chapter" data-level="6.2.3" data-path="server.html"><a href="server.html#按鈕觸發-observeevent"><i class="fa fa-check"></i><b>6.2.3</b> 按鈕觸發 observeEvent()</a></li>
+<li class="chapter" data-level="6.2.4" data-path="server.html"><a href="server.html#延遲反應-eventreactive"><i class="fa fa-check"></i><b>6.2.4</b> 延遲反應 eventReactive()</a></li>
+<li class="chapter" data-level="6.2.5" data-path="server.html"><a href="server.html#reactivevalues"><i class="fa fa-check"></i><b>6.2.5</b> reactiveValues()</a></li>
+<li class="chapter" data-level="6.2.6" data-path="server.html"><a href="server.html#reactivetimer"><i class="fa fa-check"></i><b>6.2.6</b> reactiveTimer()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="server.html"><a href="server.html#參考資料-4"><i class="fa fa-check"></i><b>6.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploy.html"><a href="deploy.html"><i class="fa fa-check"></i><b>7</b> 將Shiny App上線</a></li>
+<li class="part"><span><b>II 進階內容</b></span></li>
+<li class="chapter" data-level="8" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>8</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="8.1" data-path="design.html"><a href="design.html#樣式模板"><i class="fa fa-check"></i><b>8.1</b> 樣式模板</a></li>
+<li class="chapter" data-level="8.2" data-path="design.html"><a href="design.html#r---html"><i class="fa fa-check"></i><b>8.2</b> R -&gt; HTML</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="design.html"><a href="design.html#html-101"><i class="fa fa-check"></i><b>8.2.1</b> HTML 101</a></li>
+<li class="chapter" data-level="8.2.2" data-path="design.html"><a href="design.html#在r中撰寫html"><i class="fa fa-check"></i><b>8.2.2</b> 在R中撰寫HTML</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="design.html"><a href="design.html#css"><i class="fa fa-check"></i><b>8.3</b> CSS</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="design.html"><a href="design.html#bootstrap-and-sass"><i class="fa fa-check"></i><b>8.3.1</b> Bootstrap and Sass</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="design.html"><a href="design.html#參考資料-5"><i class="fa fa-check"></i><b>8.4</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>9</b> 儀表板</a><ul>
+<li class="chapter" data-level="9.1" data-path="dashboard.html"><a href="dashboard.html#開發儀表板步驟"><i class="fa fa-check"></i><b>9.1</b> 開發儀表板步驟</a></li>
+<li class="chapter" data-level="9.2" data-path="dashboard.html"><a href="dashboard.html#儀表板樣式設計"><i class="fa fa-check"></i><b>9.2</b> 儀表板樣式設計</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dashboard.html"><a href="dashboard.html#dashboardpage"><i class="fa fa-check"></i><b>9.2.1</b> dashboardPage()</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dashboard.html"><a href="dashboard.html#標頭"><i class="fa fa-check"></i><b>9.2.2</b> 標頭</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dashboard.html"><a href="dashboard.html#側邊欄位"><i class="fa fa-check"></i><b>9.2.3</b> 側邊欄位</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dashboard.html"><a href="dashboard.html#主頁面"><i class="fa fa-check"></i><b>9.2.4</b> 主頁面</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dashboard.html"><a href="dashboard.html#參考資料-6"><i class="fa fa-check"></i><b>9.3</b> 參考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="covid19.html"><a href="covid19.html"><i class="fa fa-check"></i><b>10</b> 新冠肺炎儀表板範例</a><ul>
+<li class="chapter" data-level="10.1" data-path="covid19.html"><a href="covid19.html#儀表板主要架構"><i class="fa fa-check"></i><b>10.1</b> 儀表板主要架構</a></li>
+<li class="chapter" data-level="10.2" data-path="covid19.html"><a href="covid19.html#流行地圖-ui"><i class="fa fa-check"></i><b>10.2</b> 流行地圖 UI</a></li>
+<li class="chapter" data-level="10.3" data-path="covid19.html"><a href="covid19.html#各國圖表-ui"><i class="fa fa-check"></i><b>10.3</b> 各國圖表 UI</a></li>
+<li class="chapter" data-level="10.4" data-path="covid19.html"><a href="covid19.html#伺服器端程式"><i class="fa fa-check"></i><b>10.4</b> 伺服器端程式</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="covid19.html"><a href="covid19.html#ui文字設定"><i class="fa fa-check"></i><b>10.4.1</b> UI文字設定</a></li>
+<li class="chapter" data-level="10.4.2" data-path="covid19.html"><a href="covid19.html#ui圖表設定"><i class="fa fa-check"></i><b>10.4.2</b> UI圖表設定</a></li>
+<li class="chapter" data-level="10.4.3" data-path="covid19.html"><a href="covid19.html#更新圖片的反應函數"><i class="fa fa-check"></i><b>10.4.3</b> 更新圖片的反應函數</a></li>
+<li class="chapter" data-level="10.4.4" data-path="covid19.html"><a href="covid19.html#更新資料的反應函數"><i class="fa fa-check"></i><b>10.4.4</b> 更新資料的反應函數</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="covid19.html"><a href="covid19.html#資料整理獨立程式碼"><i class="fa fa-check"></i><b>10.5</b> 資料整理獨立程式碼</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="js.html"><a href="js.html"><i class="fa fa-check"></i><b>11</b> 客製化使用者介面</a><ul>
+<li class="chapter" data-level="11.1" data-path="js.html"><a href="js.html#d3.js"><i class="fa fa-check"></i><b>11.1</b> D3.js</a></li>
+<li class="chapter" data-level="11.2" data-path="js.html"><a href="js.html#javascript"><i class="fa fa-check"></i><b>11.2</b> JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>12</b> 介面與效能測試</a><ul>
+<li class="chapter" data-level="12.1" data-path="test.html"><a href="test.html#介面測試"><i class="fa fa-check"></i><b>12.1</b> 介面測試</a></li>
+<li class="chapter" data-level="12.2" data-path="test.html"><a href="test.html#效能測試"><i class="fa fa-check"></i><b>12.2</b> 效能測試</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="test.html"><a href="test.html#基準測試-benchmark"><i class="fa fa-check"></i><b>12.2.1</b> 基準測試 Benchmark</a></li>
+<li class="chapter" data-level="12.2.2" data-path="test.html"><a href="test.html#效能分析-analyze"><i class="fa fa-check"></i><b>12.2.2</b> 效能分析 Analyze</a></li>
+<li class="chapter" data-level="12.2.3" data-path="test.html"><a href="test.html#程式最佳化-optimize"><i class="fa fa-check"></i><b>12.2.3</b> 程式最佳化 Optimize</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="test.html"><a href="test.html#參考資料-7"><i class="fa fa-check"></i><b>12.3</b> 參考資料</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者資訊</a></li>
-<li class="chapter" data-level="" data-path="參考資料-2.html"><a href="參考資料-2.html"><i class="fa fa-check"></i>參考資料</a></li>
+<li class="chapter" data-level="" data-path="-8.html"><a href="-8.html"><i class="fa fa-check"></i>參考資料</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -200,64 +249,319 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="server" class="section level1">
-<h1><span class="header-section-number">Ch. 5</span> 伺服器端程式 Server</h1>
+<h1><span class="header-section-number">Ch 6</span> 伺服器端程式 Server</h1>
+<p>Shiny App是由<strong>使用者介面(User Interface)</strong>與<strong>伺服器端程式 (Server Instruction)</strong>組合而成，而server函數中最重要的功能為<strong>產出使用者介面所需的輸出元件(內容)</strong>，本章節將介紹<strong>伺服器端程式</strong>的撰寫方法。</p>
 <p>伺服器端程式中有server函數，server函數的格式如下:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
-<a class="sourceLine" id="cb12-2" title="2">  </a>
-<a class="sourceLine" id="cb12-3" title="3">}</a></code></pre></div>
-<p>在server函數中，兩個固定的參數分別為input與output，分別為使用者介面UI函數中所包含輸入input與輸出output相關元件，若須取用特定輸入與輸出相關元件，可使用<code>輸入或輸出$Id</code>作為取用路徑，如<code>input$checkbox</code>，<code>output$plot</code>等，<code>$</code>錢字號前方指定取用輸入元件還是輸出元件，後方指定元件的Id。因此，在使用者介面UI函數中，幫各輸入與輸出元件取容易記憶與識別的Id是很重要的。</p>
-<p>server函數中最重要的功能為<strong>產出使用者介面所需的輸出元件(內容)</strong>，為了產出輸出元件，我們必須使用渲染函數(Render function)，渲染函數與輸入輸出函數類似，有固定的格式，通常為<code>renderXXX()</code>，<code>XXX</code>為<strong>需要呈現的資料/內容格式</strong>，如<code>Plot</code>、<code>Image</code>、<code>Table</code>等，組合成<code>renderPlot()</code>、<code>renderImage()</code>等函數。渲染函數的輸入參數為一獨立函數，此函數必須使用<code>{ }</code>大括號包起來。與撰寫函數一樣，<code>{ }</code>大括號中可有無限多行程式碼，以<strong>製作與產生需要呈現的資料/內容</strong>，如直方圖<code>hist(1:30)</code></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
-<a class="sourceLine" id="cb13-2" title="2">  <span class="kw">renderPlot</span>( {</a>
-<a class="sourceLine" id="cb13-3" title="3">    <span class="kw">hist</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>) </a>
-<a class="sourceLine" id="cb13-4" title="4">  } )</a>
-<a class="sourceLine" id="cb13-5" title="5">}</a></code></pre></div>
-<p>若輸出的圖形/資料會依照輸入資料改變，則需要在渲染函數中取用輸入元件，取用方式為<code>輸入或輸出$Id</code>，如<code>input$checkbox</code>、<code>input$max_num</code>等，輸入元件的值會隨著使用者介面的調整而即時變動，呈上述範例，我們可以將原最大數值<code>30</code>改為由輸入元件<code>input$max_num</code>決定，以達成<strong>互動式</strong>應用程式的效果。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
-<a class="sourceLine" id="cb14-2" title="2">  <span class="kw">renderPlot</span>( {</a>
-<a class="sourceLine" id="cb14-3" title="3">    <span class="kw">hist</span>(<span class="dv">1</span><span class="op">:</span>input<span class="op">$</span>max_num) </a>
-<a class="sourceLine" id="cb14-4" title="4">  } )</a>
-<a class="sourceLine" id="cb14-5" title="5">}</a></code></pre></div>
-<p>最後將渲染函數的值指定給輸出元件，如<code>output$plot&lt;-渲染函數({#一大堆程式碼})</code>，即完成使用者介面所需的輸出output元件的產出程式。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
-<a class="sourceLine" id="cb15-2" title="2">  output<span class="op">$</span>plot&lt;-<span class="kw">renderPlot</span>( {</a>
-<a class="sourceLine" id="cb15-3" title="3">    <span class="kw">hist</span>(<span class="dv">1</span><span class="op">:</span>input<span class="op">$</span>max_num) </a>
-<a class="sourceLine" id="cb15-4" title="4">  } )</a>
-<a class="sourceLine" id="cb15-5" title="5">}</a></code></pre></div>
-<p>反應函數Reactive function</p>
-<p>在使用者介面中，當輸入元件 (如<code>input$num</code>)的值改變時，會通知使用該輸入元件的反應函數，該反應函數使用該輸入元件的新值，並做相對應的運算與輸出處理。</p>
-<p>Use a code chunk to build an object</p>
-<p>Reactive toolkit
-1. 渲染函數 <code>render*()</code>
-2. 反應函數 <code>reactive()</code>
-3.
-4.
-5.
-6.
-7.</p>
-<p>以渲染函數來說，若輸入元件 (如<code>input$num</code>)的值改變時，渲染函數<code>renderPlot({ })</code>大括號<code>{ }</code>中的程式碼會從頭到尾從新執行一次。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">renderPlot</span>( {</a>
-<a class="sourceLine" id="cb16-2" title="2">  <span class="co">## re-run start</span></a>
-<a class="sourceLine" id="cb16-3" title="3">    <span class="kw">hist</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>) </a>
-<a class="sourceLine" id="cb16-4" title="4">  <span class="co">## re-run end</span></a>
-<a class="sourceLine" id="cb16-5" title="5">  } )</a></code></pre></div>
-<p>在某些狀況中，渲染函數<code>renderPlot({ })</code>大括號<code>{ }</code>中的程式碼會在server function中出現多次，若每次輸入元件改變時，同樣的程式碼必須執行多次，在效能上可能會出現問題，此時可用反應函數<code>reactive()</code>，將執行結果暫存。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">data&lt;-<span class="kw">reactive</span>({</a>
-<a class="sourceLine" id="cb17-2" title="2">  </a>
-<a class="sourceLine" id="cb17-3" title="3">}</a>
-<a class="sourceLine" id="cb17-4" title="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">  <span class="co"># 伺服器端程式</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">  input<span class="op">$</span>checkbox</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">  output<span class="op">$</span>plot</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">  <span class="co"># etc..</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">}</a></code></pre></div>
+<p>從上述程式碼可以發現在server函數中，有兩個固定的參數，分別為<code>input</code>與<code>output</code>，<code>input</code>為使用者介面中所包含的輸入元件，<code>output</code>為輸出元件。若須取用特定輸入與輸出相關元件，可使用<code>input或output$Id</code>作為取用路徑，如<code>input$checkbox</code>，<code>output$plot</code>等，<code>$</code>錢字號前方指定取用輸入元件<code>input</code>還是輸出元件<code>output</code>，後方指定元件的<code>Id</code>。因此，在使用者介面函數中，<strong>幫各輸入與輸出元件取容易記憶與識別的Id</strong>是很重要的。</p>
+<div id="渲染函數-render-function" class="section level2">
+<h2><span class="header-section-number">6.1</span> 渲染函數 Render function</h2>
+<p>為了在server函數產出輸出元件，我們必須使用<strong>渲染函數(Render function)</strong>，渲染函數與輸入輸出函數類似，有固定的格式，通常為<code>renderXXX()</code>，<code>XXX</code>為<strong>需要呈現的資料/內容格式</strong>，如<code>Plot</code>、<code>Image</code>、<code>Table</code>等，組合成<code>renderPlot()</code>、<code>renderImage()</code>等函數。渲染函數的輸入參數為一獨立函數，此函數必須使用<code>{ }</code>大括號包起來。與撰寫函數一樣，<code>{ }</code>大括號中可有無限多行程式碼，以<strong>製作與產生需要呈現的資料/內容</strong>，如直方圖<code>hist(rnorm(30))</code></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">  <span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">    <span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>)) </a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">  } )</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">}</a></code></pre></div>
+<p>若輸出的圖形/資料會依照輸入資料改變，則需要在渲染函數中取用<strong>輸入元件</strong>，取用方式為<code>input$Id</code>，如<code>input$checkbox</code>、<code>input$max_num</code>等，輸入元件的值會隨著使用者介面的調整而即時變動，承上述範例，我們可以將原數值<code>30</code>改為由輸入元件<code>input$max_num</code>決定，以達成<strong>互動式</strong>應用程式的效果。</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">  <span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">    <span class="kw">hist</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">  } )</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">}</a></code></pre></div>
+<p>最後將渲染函數的值指定給輸出元件，如<code>output$hist&lt;-渲染函數({#一大堆程式碼})</code>，即完成使用者介面所需的輸出output元件的產出程式。</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">  output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">    <span class="kw">hist</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">  } )</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">}</a></code></pre></div>
+<p>完整範例程式碼：</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>( <span class="co">#頁面設定函數</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">    <span class="kw">titlePanel</span>(<span class="st">&quot;My First Shiny App&quot;</span>), <span class="co">#標題版面(panel)</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">    <span class="kw">sidebarLayout</span>( <span class="co">#版型(layout)</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">        <span class="kw">sidebarPanel</span>( <span class="co">#側邊欄位版面(panel)</span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">            <span class="kw">sliderInput</span>( <span class="co">#輸入元件函數</span></a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">                <span class="dt">inputId =</span> <span class="st">&quot;max_num&quot;</span>,</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">                <span class="dt">label =</span><span class="st">&quot;Choose a number&quot;</span>,</a>
+<a class="sourceLine" id="cb31-8" data-line-number="8">                <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">100</span>, </a>
+<a class="sourceLine" id="cb31-9" data-line-number="9">                <span class="dt">value =</span><span class="dv">25</span></a>
+<a class="sourceLine" id="cb31-10" data-line-number="10">            )</a>
+<a class="sourceLine" id="cb31-11" data-line-number="11">        ), </a>
+<a class="sourceLine" id="cb31-12" data-line-number="12">        <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb31-13" data-line-number="13">            <span class="kw">plotOutput</span>(<span class="st">&quot;hist&quot;</span>)</a>
+<a class="sourceLine" id="cb31-14" data-line-number="14">        ) <span class="co">#主頁版面(panel)</span></a>
+<a class="sourceLine" id="cb31-15" data-line-number="15">    )</a>
+<a class="sourceLine" id="cb31-16" data-line-number="16">)</a>
+<a class="sourceLine" id="cb31-17" data-line-number="17">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb31-18" data-line-number="18">  output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb31-19" data-line-number="19">    <span class="kw">hist</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a>
+<a class="sourceLine" id="cb31-20" data-line-number="20">  } )</a>
+<a class="sourceLine" id="cb31-21" data-line-number="21">}</a>
+<a class="sourceLine" id="cb31-22" data-line-number="22"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<p>上述程式程式可達效果：</p>
+<p><img src="figure/render.gif" /><!-- --></p>
+<p>若想要查看各項輸入元件取值的格式與範例程式碼，可至 <a href="https://shiny.rstudio.com/gallery/widget-gallery.html" target="_blank">Shiny Widgets Gallery</a>網站查看。</p>
+<p>延續上一章節 (<a href="output.html#output">5</a>)，常見的輸出元件函數與其對應的<strong>渲染函數</strong>如下：</p>
+<ol style="list-style-type: decimal">
+<li>表格類</li>
+</ol>
+<ul>
+<li><code>dataTableOutput()</code>: <code>renderDataTable()</code></li>
+<li><code>tableOutput()</code>: <code>renderTable()</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>圖片類</li>
+</ol>
+<ul>
+<li><code>imageOutput()</code>: <code>renderImage()</code></li>
+<li><code>plotOutput()</code>: <code>renderPlot()</code></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>HTML類</li>
+</ol>
+<ul>
+<li><code>htmlOutput()</code>: <code>renderUI()</code></li>
+<li><code>uiOutput()</code>: <code>renderUI()</code></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>文字類</li>
+</ol>
+<ul>
+<li><code>textOutput()</code>: <code>renderText()</code></li>
+<li><code>verbatimTextOutput()</code>: <code>renderText()</code></li>
+</ul>
+</div>
+<div id="reactive" class="section level2">
+<h2><span class="header-section-number">6.2</span> 反應函數 Reactive function</h2>
+<p>在使用者介面中，當輸入元件 (如<code>input$num</code>)的值改變時，會通知使用該輸入元件的<strong>反應函數</strong>，該反應函數會使用該輸入元件的新值，並做相對應的運算與輸出處理，上個小節介紹的渲染函數為最常見的反應函數。</p>
+<p>以渲染函數來說，若輸入元件 (如<code>input$max_num</code>)的值改變時，渲染函數<code>renderPlot({ })</code>大括號<code>{ }</code>中的程式碼會從頭到尾從新執行一次。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="co">## re-run start</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">  <span class="kw">hist</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">  <span class="co">## re-run end</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">} )</a></code></pre></div>
+<div id="反應函數-reactive" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> 反應函數 reactive()</h3>
+<p>在某些狀況中，渲染函數<code>renderPlot({ })</code>大括號<code>{ }</code>中的程式碼會在server function中出現多次，若每次輸入元件改變時，同樣的程式碼必須執行多次，可能會影響程式效能，此時可用反應函數<code>reactive()</code>，將執行結果暫存。</p>
+<p>以下是同一系列的程式碼在server function中出現多次的情境，其中<code>cal&lt;-(input$max_num*100+30)/100   random&lt;-rnorm(cal)</code>這兩行程式碼會執行多次，若程式碼更長或是更複雜一些，就會顯著的影響效能。</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">  <span class="co">## re-run start</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">  cal&lt;-(input<span class="op">$</span>max_num<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">  random&lt;-<span class="kw">rnorm</span>(cal)</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">  <span class="kw">hist</span>(random)</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">  <span class="co">## re-run end</span></a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">} )</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8"><span class="kw">renderText</span>( {</a>
+<a class="sourceLine" id="cb33-9" data-line-number="9">  <span class="co">## re-run start</span></a>
+<a class="sourceLine" id="cb33-10" data-line-number="10">  cal&lt;-(input<span class="op">$</span>max_num<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb33-11" data-line-number="11">  random&lt;-<span class="kw">rnorm</span>(cal)</a>
+<a class="sourceLine" id="cb33-12" data-line-number="12">  random</a>
+<a class="sourceLine" id="cb33-13" data-line-number="13">  <span class="co">## re-run end</span></a>
+<a class="sourceLine" id="cb33-14" data-line-number="14">} )</a></code></pre></div>
+<p>除了效能以外，這類程式碼執行多次會有問題，通常我們要同時輸出相同資料的文字與圖片，但在此情境中，<code>random&lt;-rnorm(cal)</code>會在<code>renderPlot()</code>中執行一次，並在<code>renderText()</code>中執行一次，執行兩次<code>rnorm()</code>的結果，就是拿來畫圖的資料與文字呈現的資料並非同一組資料。為了證明兩次執行的<code>rnorm()</code>結果不同，進而造成圖片與文字使用的資料不同的問題，可參考以下測試程式碼。</p>
+<p>完整範例程式碼：</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>( <span class="co">#頁面設定函數</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">  <span class="kw">titlePanel</span>(<span class="st">&quot;My First Shiny App&quot;</span>), <span class="co">#標題版面(panel)</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">  <span class="kw">sidebarLayout</span>( <span class="co">#版型(layout)</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">    <span class="kw">sidebarPanel</span>( <span class="co">#側邊欄位版面(panel)</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">      <span class="kw">sliderInput</span>( <span class="co">#輸入元件函數</span></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">        <span class="dt">inputId =</span> <span class="st">&quot;max_num&quot;</span>,</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">        <span class="dt">label =</span><span class="st">&quot;Choose a number&quot;</span>,</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">        <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">100</span>, </a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">        <span class="dt">value =</span><span class="dv">25</span></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">      )</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">    ), </a>
+<a class="sourceLine" id="cb34-12" data-line-number="12">    <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">      <span class="kw">plotOutput</span>(<span class="st">&quot;hist&quot;</span>),</a>
+<a class="sourceLine" id="cb34-14" data-line-number="14">      <span class="kw">textOutput</span>(<span class="st">&quot;random&quot;</span>)</a>
+<a class="sourceLine" id="cb34-15" data-line-number="15">    ) <span class="co">#主頁版面(panel)</span></a>
+<a class="sourceLine" id="cb34-16" data-line-number="16">  )</a>
+<a class="sourceLine" id="cb34-17" data-line-number="17">)</a>
+<a class="sourceLine" id="cb34-18" data-line-number="18">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb34-19" data-line-number="19">  output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb34-20" data-line-number="20">    <span class="co">## re-run start</span></a>
+<a class="sourceLine" id="cb34-21" data-line-number="21">    cal&lt;-(input<span class="op">$</span>max_num<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb34-22" data-line-number="22">    random&lt;-<span class="kw">rnorm</span>(cal)</a>
+<a class="sourceLine" id="cb34-23" data-line-number="23">    <span class="kw">cat</span>(random)</a>
+<a class="sourceLine" id="cb34-24" data-line-number="24">    <span class="kw">hist</span>(random)</a>
+<a class="sourceLine" id="cb34-25" data-line-number="25">    <span class="co">## re-run end</span></a>
+<a class="sourceLine" id="cb34-26" data-line-number="26">  } )</a>
+<a class="sourceLine" id="cb34-27" data-line-number="27">  output<span class="op">$</span>random&lt;-<span class="kw">renderText</span>( {</a>
+<a class="sourceLine" id="cb34-28" data-line-number="28">    <span class="co">## re-run start</span></a>
+<a class="sourceLine" id="cb34-29" data-line-number="29">    cal&lt;-(input<span class="op">$</span>max_num<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb34-30" data-line-number="30">    random&lt;-<span class="kw">rnorm</span>(cal)</a>
+<a class="sourceLine" id="cb34-31" data-line-number="31">    random</a>
+<a class="sourceLine" id="cb34-32" data-line-number="32">    <span class="co">## re-run end</span></a>
+<a class="sourceLine" id="cb34-33" data-line-number="33">  } )</a>
+<a class="sourceLine" id="cb34-34" data-line-number="34">}</a>
+<a class="sourceLine" id="cb34-35" data-line-number="35"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<p>上述程式碼執行後，畫圖的資料會呈現在console視窗 (節塗黑底部分)，而文字資料則是呈現在Shiny App中 (直方圖下方)，可以發現兩邊的資料是不同的:</p>
+<p><img src="figure/shinyRandom.png" width="562" /></p>
+<p>為了解決上述<strong>相同程式碼執行多次</strong>以及<strong>可能的資料不一致</strong>問題，可用反應函數<code>reactive()</code>，將需重複執行的程式碼擷取至反應函數<code>reactive()</code>中，並將執行結果儲存至變數<code>saved_data</code>中，透過反應函數<code>reactive()</code>的設定，當輸入元件改變時，只會重複執行反應函數<code>reactive()</code>中的程式碼一次，再依序將執行結果渲染至輸出元件中。要特別注意的地方是在叫用<code>saved_data</code>時，必須以函數的方式叫用<code>saved_data()</code>。</p>
+<p>範例程式碼:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">saved_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">  cal&lt;-(input<span class="op">$</span>max_num<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">  random&lt;-<span class="kw">rnorm</span>(cal)</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">  random</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">} )</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">  <span class="kw">hist</span>(<span class="kw">saved_data</span>())</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">} )</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="kw">renderText</span>( {</a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">  <span class="kw">saved_data</span>()</a>
+<a class="sourceLine" id="cb35-11" data-line-number="11">} )</a></code></pre></div>
+<p>為了檢查此時文字與圖片使用資料是否一至，可複製並執行以下完整範例程式碼：</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>( <span class="co">#頁面設定函數</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">  <span class="kw">titlePanel</span>(<span class="st">&quot;My First Shiny App&quot;</span>), <span class="co">#標題版面(panel)</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">  <span class="kw">sidebarLayout</span>( <span class="co">#版型(layout)</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">    <span class="kw">sidebarPanel</span>( <span class="co">#側邊欄位版面(panel)</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">      <span class="kw">sliderInput</span>( <span class="co">#輸入元件函數</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">        <span class="dt">inputId =</span> <span class="st">&quot;max_num&quot;</span>,</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">        <span class="dt">label =</span><span class="st">&quot;Choose a number&quot;</span>,</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8">        <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">100</span>, </a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">        <span class="dt">value =</span><span class="dv">25</span></a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">      )</a>
+<a class="sourceLine" id="cb36-11" data-line-number="11">    ), </a>
+<a class="sourceLine" id="cb36-12" data-line-number="12">    <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb36-13" data-line-number="13">      <span class="kw">plotOutput</span>(<span class="st">&quot;hist&quot;</span>),</a>
+<a class="sourceLine" id="cb36-14" data-line-number="14">      <span class="kw">textOutput</span>(<span class="st">&quot;random&quot;</span>)</a>
+<a class="sourceLine" id="cb36-15" data-line-number="15">    ) <span class="co">#主頁版面(panel)</span></a>
+<a class="sourceLine" id="cb36-16" data-line-number="16">  )</a>
+<a class="sourceLine" id="cb36-17" data-line-number="17">)</a>
+<a class="sourceLine" id="cb36-18" data-line-number="18">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb36-19" data-line-number="19">  saved_data&lt;-<span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb36-20" data-line-number="20">    cal&lt;-(input<span class="op">$</span>max_num<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb36-21" data-line-number="21">    random&lt;-<span class="kw">rnorm</span>(cal)</a>
+<a class="sourceLine" id="cb36-22" data-line-number="22">    random</a>
+<a class="sourceLine" id="cb36-23" data-line-number="23">  } )</a>
+<a class="sourceLine" id="cb36-24" data-line-number="24">  output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb36-25" data-line-number="25">    <span class="kw">print</span>(<span class="kw">saved_data</span>())</a>
+<a class="sourceLine" id="cb36-26" data-line-number="26">    <span class="kw">hist</span>(<span class="kw">saved_data</span>())</a>
+<a class="sourceLine" id="cb36-27" data-line-number="27">  } )</a>
+<a class="sourceLine" id="cb36-28" data-line-number="28">  output<span class="op">$</span>random&lt;-<span class="kw">renderText</span>( {</a>
+<a class="sourceLine" id="cb36-29" data-line-number="29">    <span class="kw">saved_data</span>()</a>
+<a class="sourceLine" id="cb36-30" data-line-number="30">  } )</a>
+<a class="sourceLine" id="cb36-31" data-line-number="31">}</a>
+<a class="sourceLine" id="cb36-32" data-line-number="32"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<p>上述程式碼執行後，畫圖的資料會呈現在console視窗 (節塗黑底部分)，而文字資料則是呈現在Shiny App中 (直方圖下方)，可以發現兩邊的資料此時是一致的:</p>
+<p><img src="figure/shinyRandomReactive.png" width="560" /></p>
+<p>適當的使用反應函數<code>reactive()</code>可減少相同程式碼的執行次數，也可避免可能的資料不一致問題。</p>
+</div>
+<div id="不反應-isolate" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> 不反應 isolate()</h3>
 <p><code>isolate()</code>
-將不需即時反應/重跑程式的輸入元件放入隔離函數<code>isolate()</code>中，即可將此輸入元件變成非反應元件，當此輸入元件改變時，程式並不會成跑，此法可降低程式重跑的次數，提升效能與使用者體驗。</p>
-<p><code>observeEvent()</code>，當<code>observeEvent()</code>中的輸入元件改變時，將會觸發伺服器端程式碼的執行</p>
-<p><code>observe()</code>就像其他反應函數的使用方式</p>
-<p>Delay reactions
-<code>eventReactive()</code>
-根據上述反應函數的介紹，通常輸入元件改變時，反應函數會即時反應，並改變輸出內容，但有時我們想避免不必要的即時反應，舉例來說，
-action button</p>
-<p><code>reactiveValues()</code>
-藉由輸入函數，修改自定義的資料內容，接著觸發反應函數的功能，並更新相對應的輸出</p>
-<p>timer</p>
+將不需即時反應/重跑程式的輸入元件放入隔離函數<code>isolate()</code>中，即可將此輸入元件變成非反應元件，當此輸入元件改變時，程式並不會重跑。此法避免不必要的程式重跑，提升效能與使用者體驗。</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">isolate</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a></code></pre></div>
+</div>
+<div id="按鈕觸發-observeevent" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> 按鈕觸發 observeEvent()</h3>
+<p><code>observeEvent()</code>通常搭配<code>actionButton()</code>使用，<code>observeEvent()</code>的第一個參數為<strong>追蹤的輸入元件</strong>，通常為按鈕，第二個參數則為按鈕點選後<strong>需要執行的程式碼</strong>，當<code>observeEvent()</code>中的輸入元件改變時，如點選某個action button，將會觸發後續程式碼的執行，如下列程式碼所示，第一個參數為<code>input$action</code>，為<code>actionButton()</code>，第二個參數則是將資料放入圖型輸出元件。在程式碼執行時，調整<code>input$max_num</code>的值，以及點選<code>input$action</code>按鈕，都會觸發圖片更新。</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">    <span class="kw">observeEvent</span>(input<span class="op">$</span>action, {</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">        output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">            <span class="kw">hist</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">        } )</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">    })</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">}</a></code></pre></div>
+<p>完整的可執行程式碼如下:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">  <span class="kw">titlePanel</span>(<span class="st">&quot;My First Shiny App&quot;</span>), <span class="co">#標題版面(panel)</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">  <span class="kw">sidebarLayout</span>( <span class="co">#版型(layout)</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">    <span class="kw">sidebarPanel</span>( <span class="co">#側邊欄位版面(panel)</span></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7">      <span class="kw">sliderInput</span>( <span class="co">#輸入元件函數</span></a>
+<a class="sourceLine" id="cb39-8" data-line-number="8">        <span class="dt">inputId =</span> <span class="st">&quot;max_num&quot;</span>,</a>
+<a class="sourceLine" id="cb39-9" data-line-number="9">        <span class="dt">label =</span><span class="st">&quot;Choose a number&quot;</span>,</a>
+<a class="sourceLine" id="cb39-10" data-line-number="10">        <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">100</span>, </a>
+<a class="sourceLine" id="cb39-11" data-line-number="11">        <span class="dt">value =</span><span class="dv">25</span></a>
+<a class="sourceLine" id="cb39-12" data-line-number="12">      ),</a>
+<a class="sourceLine" id="cb39-13" data-line-number="13">      <span class="kw">actionButton</span>(<span class="st">&quot;action&quot;</span>, <span class="st">&quot;點我重畫圖&quot;</span>)</a>
+<a class="sourceLine" id="cb39-14" data-line-number="14">    ), </a>
+<a class="sourceLine" id="cb39-15" data-line-number="15">    <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb39-16" data-line-number="16">      <span class="kw">plotOutput</span>(<span class="st">&quot;hist&quot;</span>),</a>
+<a class="sourceLine" id="cb39-17" data-line-number="17">    ) <span class="co">#主頁版面(panel)</span></a>
+<a class="sourceLine" id="cb39-18" data-line-number="18">  )</a>
+<a class="sourceLine" id="cb39-19" data-line-number="19">)</a>
+<a class="sourceLine" id="cb39-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb39-21" data-line-number="21">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb39-22" data-line-number="22">    <span class="kw">observeEvent</span>(input<span class="op">$</span>action, {</a>
+<a class="sourceLine" id="cb39-23" data-line-number="23">        output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb39-24" data-line-number="24">            <span class="kw">hist</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>max_num))</a>
+<a class="sourceLine" id="cb39-25" data-line-number="25">        } )</a>
+<a class="sourceLine" id="cb39-26" data-line-number="26">    })</a>
+<a class="sourceLine" id="cb39-27" data-line-number="27">}</a>
+<a class="sourceLine" id="cb39-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb39-29" data-line-number="29"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<p>由操作執行結果可發現不管是滑動數值或是點選按鈕，都能觸發圖片更新。</p>
+<p><img src="figure/shinyRandomReactive.png" width="560" /></p>
+</div>
+<div id="延遲反應-eventreactive" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> 延遲反應 eventReactive()</h3>
+<p>根據上述反應函數的介紹，通常輸入元件改變時，反應函數會即時反應，並改變輸出內容，但有時我們想避免不必要的即時反應，舉例來說，上述使用<code>observeEvent()</code>的範例可以實作在<strong>數值更新</strong>以及<strong>點選按鈕</strong>時都更新圖片的網頁，但有時我們希望能在<strong>點選按鈕時才更新網頁</strong>，數值更新時網頁則不做任何變動，此時可使用<code>eventReactive()</code>函數實作延遲反應的功能，如下列程式碼所示，<code>eventReactive()</code>函數的第一個參數為<strong>按鈕輸入元件</strong>，如<code>input$action</code>，第二個參數為按鈕被點選後需要執行的程式碼，通常<strong>包括其他不想要程式即時反應變動的輸入元件</strong>，如<code>input$max_num</code>。<code>eventReactive()</code>函數的輸出必須存在一變數中，以<code>randomVals</code>為例，在渲染函數叫用此變數時，需要用function的方式叫用，如<code>hist(randomVals())</code></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">    randomVals &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>action, {</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">        <span class="kw">rnorm</span>(input<span class="op">$</span>max_num)</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">    })</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">    output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">        <span class="kw">hist</span>(<span class="kw">randomVals</span>())</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">    } )</a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">}</a></code></pre></div>
+<p>完整可執行程式碼如下:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">    <span class="kw">titlePanel</span>(<span class="st">&quot;My First Shiny App&quot;</span>), <span class="co">#標題版面(panel)</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">    <span class="kw">sidebarLayout</span>( <span class="co">#版型(layout)</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">        <span class="kw">sidebarPanel</span>( <span class="co">#側邊欄位版面(panel)</span></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5">            <span class="kw">sliderInput</span>( <span class="co">#輸入元件函數</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6">                <span class="dt">inputId =</span> <span class="st">&quot;max_num&quot;</span>,</a>
+<a class="sourceLine" id="cb41-7" data-line-number="7">                <span class="dt">label =</span><span class="st">&quot;Choose a number&quot;</span>,</a>
+<a class="sourceLine" id="cb41-8" data-line-number="8">                <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">100</span>, </a>
+<a class="sourceLine" id="cb41-9" data-line-number="9">                <span class="dt">value =</span><span class="dv">25</span></a>
+<a class="sourceLine" id="cb41-10" data-line-number="10">            ),</a>
+<a class="sourceLine" id="cb41-11" data-line-number="11">            <span class="kw">actionButton</span>(<span class="st">&quot;action&quot;</span>, <span class="st">&quot;點我重畫圖&quot;</span>)</a>
+<a class="sourceLine" id="cb41-12" data-line-number="12">        ), </a>
+<a class="sourceLine" id="cb41-13" data-line-number="13">        <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb41-14" data-line-number="14">            <span class="kw">plotOutput</span>(<span class="st">&quot;hist&quot;</span>),</a>
+<a class="sourceLine" id="cb41-15" data-line-number="15">        ) <span class="co">#主頁版面(panel)</span></a>
+<a class="sourceLine" id="cb41-16" data-line-number="16">    )</a>
+<a class="sourceLine" id="cb41-17" data-line-number="17">)</a>
+<a class="sourceLine" id="cb41-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb41-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb41-20" data-line-number="20">server &lt;-<span class="st"> </span><span class="cf">function</span> (input,output){</a>
+<a class="sourceLine" id="cb41-21" data-line-number="21">    randomVals &lt;-<span class="st"> </span><span class="kw">eventReactive</span>(input<span class="op">$</span>action, {</a>
+<a class="sourceLine" id="cb41-22" data-line-number="22">        <span class="kw">rnorm</span>(input<span class="op">$</span>max_num)</a>
+<a class="sourceLine" id="cb41-23" data-line-number="23">    })</a>
+<a class="sourceLine" id="cb41-24" data-line-number="24">    output<span class="op">$</span>hist&lt;-<span class="kw">renderPlot</span>( {</a>
+<a class="sourceLine" id="cb41-25" data-line-number="25">        <span class="kw">hist</span>(<span class="kw">randomVals</span>())</a>
+<a class="sourceLine" id="cb41-26" data-line-number="26">    } )</a>
+<a class="sourceLine" id="cb41-27" data-line-number="27">}</a>
+<a class="sourceLine" id="cb41-28" data-line-number="28"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<p>由操作執行結果可發現只有點選按鈕才能觸發圖片更新。</p>
+<p><img src="figure/shinyRandomReactive.png" width="560" /></p>
+</div>
+<div id="reactivevalues" class="section level3">
+<h3><span class="header-section-number">6.2.5</span> reactiveValues()</h3>
+<p><strong>撰寫中</strong></p>
+<p><code>reactiveValues()</code> 藉由輸入函數，修改自定義的資料內容，接著觸發反應函數的功能，並更新相對應的輸出</p>
+</div>
+<div id="reactivetimer" class="section level3">
+<h3><span class="header-section-number">6.2.6</span> reactiveTimer()</h3>
+<p><strong>撰寫中</strong></p>
+<p>timer <code>reactiveTimer()</code></p>
+</div>
+</div>
+<div id="參考資料-4" class="section level2">
+<h2><span class="header-section-number">6.3</span> 參考資料</h2>
+<ul>
+<li><a href="https://shiny.rstudio.com/tutorial/" target="_blank">Learn Shiny</a></li>
+<li><a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/" target="_blank">Display reactive output</a></li>
+</ul>
 
+</div>
 </div>
             </section>
 
@@ -265,7 +569,7 @@ action button</p>
         </div>
       </div>
 <a href="output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="deploy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -284,11 +588,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -300,10 +605,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
